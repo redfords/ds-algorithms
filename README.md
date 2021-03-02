@@ -8,7 +8,7 @@ Introduction to algorithms: big O notation, recursion, divide and conquer.
 
 Built-in data structures: lists, dictionaries, tuples, sets.
 
-User -defined data structures: stacks, queues, trees, linked lists, graphs, hashmaps.
+User-defined data structures: stacks, queues, trees, linked lists, graphs, hashmaps.
 
 Sorting algorithms: bubble sort, selection sort, insertion sort, quick sort, merge sort, counting sort.
 
