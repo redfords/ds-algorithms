@@ -18,7 +18,7 @@ Searching algorithms: linear search, binary search, jump search.
 
 [Techie Delight](https://www.techiedelight.com/list-of-problems/)
 
-[Data Structures Easy to Advanced Course](https://www.youtube.com/watch?v=RBSGKlAvoiM)
+[Python Data Structures](https://www.coursera.org/learn/python-data)
 
 [Data Structures and Algorithms in Python](https://towardsdatascience.com/data-structures-algorithms-in-python-68c8dbb19c90)
 
