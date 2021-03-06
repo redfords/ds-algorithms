@@ -62,7 +62,8 @@ def string_match(a, b):
     return count
 
     
-""" Given an array of ints length 3, return an array with the elements "rotated left" so {1, 2, 3} yields {2, 3, 1}.
+""" Given an array of ints length 3, return an array with the elements "rotated left"
+so {1, 2, 3} yields {2, 3, 1}.
 
 rotate_left3([1, 2, 3]) → [2, 3, 1]
 rotate_left3([5, 11, 9]) → [11, 9, 5]
@@ -74,3 +75,46 @@ def rotate_nums(nums):
     rotated.append(nums[0])
     return rotated
 
+""" Given an array length 1 or more of ints, return the difference between the largest
+and smallest values in the array.
+
+big_diff([10, 3, 5, 6]) → 7
+big_diff([7, 2, 10, 9]) → 8
+big_diff([2, 10, 7, 2]) → 8
+"""
+
+def big_diff(nums):
+    max_num = nums[0]
+    min_num = nums[0]
+    for num in nums:
+        max_num = max(num, max_num)
+        min_num = min(num, min_num)
+    return max_num - min_num
+
+
+""" Return the "centered" average of an array of ints, which is the mean average of the
+values, except ignoring the largest and smallest values in the array. You may assume that
+the array is length 3 or more.
+
+centered_average([1, 2, 3, 4, 100]) → 3
+centered_average([1, 1, 5, 5, 10, 8, 7]) → 5
+centered_average([-10, -4, -2, -4, -2, 0]) → -3
+"""
+
+def centered_average(nums):
+    max_num = nums[0]
+    min_num = nums[0]
+    
+    for num in nums:
+        max_num = max(num, max_num) 
+        min_num = min(num, min_num)
+    
+    nums.remove(max_num)
+    nums.remove(min_num)
+    
+    nums_sum = 0
+    count = 0
+    for num in nums:
+        nums_sum += num
+        count += 1
+    return nums_sum / count
