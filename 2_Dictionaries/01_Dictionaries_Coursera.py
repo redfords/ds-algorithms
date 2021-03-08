@@ -21,7 +21,7 @@ def most_frequent_word():
     print(bigword, bigcount)
 
 
-"""Write a program to read through a mail log, and return how many messages have
+""" Write a program to read through a mail log, and return how many messages have
 come from each email address.
 
 Enter file name: mbox-short.txt
@@ -49,7 +49,28 @@ def no_of_emails():
     print(max(counts, key = counts.get), max(counts.values()))
     handle.close()
 
-no_of_emails()
 
+""" Write a program that reads a file and prints the letters in decreasing order
+of frequency. Your program should convert all the input to lower case and only
+count the letters a-z. Your program should not count spaces, digits, punctuation,
+or anything other than the letters a-z.
+"""
 
+def letter_frequency():
+    name = input("Enter the file: ")
+    handle = open(name)
+
+    counts = dict()
+    text = handle.read().lower()
+    for letter in text:
+        if letter >= 'a' <= 'z':
+            counts[letter] = counts.get(letter, 0) + 1
+    
+    sorted_counts = sorted( [ (v,k) for k,v in counts.items() ], reverse=True)
+    for k,v in sorted_counts:
+        print(k,v)
+
+    handle.close()
+
+letter_frequency()
 
