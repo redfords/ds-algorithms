@@ -36,3 +36,47 @@ dict_keys(['Back in Black', 'The Bodyguard', 'Thriller'])
 
 album_sales_dict.values()
 dict_values([50, 50, 65])
+
+""" Text Analysis 
+You have been recruited by your friend, a linguistics enthusiast, to create a utility tool that can
+perform analysis on a given piece of text.
+​
+Constructor - takes argument 'text', makes it lower case and removes all punctuation, assume only the
+following punctuation is used: period (.), exclamation mark (!), comma (,) and question mark (?).
+
+freqAll - returns a dictionary of all unique words along with the number of their occurences.
+
+freqOf - returns the frequency of the word passed in argument. """
+
+class analysedText(object):
+    def __init__(self, text):
+        self.text = text
+
+        for ch in ['.', ',', '!', '?']:
+            text = text.replace(ch, '')
+        self.fmtText = text.lower()
+
+    def freqAll(self):
+        words = self.fmtText.split()
+        counts = dict()
+        for w in words:
+            counts[w] = counts.get(w, 0) + 1
+        return counts
+
+        # wordList = self.fmtText.split()
+        # freqMap = {}
+        # for word in set(wordList):
+        #     freqMap[word] = wordList.count(word)
+    
+    def freqOf(self, word):
+        freqDict = self.freqAll()       
+        if word in freqDict:
+            return freqDict[word]
+        else:
+            return 0
+
+sample = "Lorem ipsum dolor! diam amet, consetetur Lorem magna. sed diam nonumy eirmod tempor. diam et labore? et diam magna. et diam amet."
+t1 = analysedText(sample)
+print(t1.fmtText)
+print(t1.freqAll())
+print(t1.freqOf('lorem'))
