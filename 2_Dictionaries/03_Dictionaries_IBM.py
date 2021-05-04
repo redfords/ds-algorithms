@@ -80,3 +80,9 @@ t1 = analysedText(sample)
 print(t1.fmtText)
 print(t1.freqAll())
 print(t1.freqOf('lorem'))
+
+# Copy file to another
+with open("example1.txt","r") as readFile:
+    with open("example2.txt","w") as writeFile:
+        for line in readFile:
+            writeFile.write(line)
