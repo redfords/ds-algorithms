@@ -8,7 +8,7 @@ soundtrack_dic = {"The Bodyguard":"1992", "Saturday Night Fever":"1977"}
 soundtrack_dic.keys()
 dict_keys(['The Bodyguard', 'Saturday Night Fever'])
 
-#  In the dictionary soundtrack_dic what are the values ?
+#  In the dictionary soundtrack_dic what are the values?
 
 soundtrack_dic.values()
 dict_values(['1992', '1977'])
