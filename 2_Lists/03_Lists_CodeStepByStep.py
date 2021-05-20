@@ -97,3 +97,128 @@ def contains(main_list, sub_list):
                 contains = True
     return contains
 
+"""
+Assume that a two-dimensional rectangular list of integers called matrix has been declared with
+six rows and eight columns. Write a for loop to copy the contents of the second column into the
+fifth column.
+"""
+
+def copy_column(matrix):
+    for i in matrix:
+        j = 0
+        while j < len(i):
+            if j == 1:
+                i[4] = i[j]
+            j += 1
+    return matrix
+
+"""
+Write a function named count_duplicates that accepts a list of integers as a parameter and that
+returns the number of duplicate values in the list. A duplicate value is a value that also occurs
+earlier in the list. If a list named a contains [1, 4, 2, 4, 7, 1, 1, 9, 2, 3, 4, 1], then call
+call of count_duplicates() should return 6 because there are three duplicates of the value 1, one
+duplicate of the value 2, and two duplicates of the value 4.
+"""
+
+def count_duplicates(num):
+    duplicates = 0
+    i = 0
+    while i < len(num) - 1:
+        if num[i] in num[i + 1:]:
+            duplicates += 1
+            remove_num = num[i]
+            for n in num[i + 1:]:
+                if n == num[i]: 
+                    duplicates += 1
+            while remove_num in num:
+                num.remove(remove_num)
+        i += 1
+    return duplicates
+
+"""
+Write a function named count_unique that accepts a list of integers as a parameter and returns a
+count of the number of unique values that occur in the list. If the list contains multiple occurrences
+of the same element value, only one of those occurrences should count toward your total. For example,
+if a list named numbers stores [7, 7, 2, 2, 1, 2, 2, 7], the call of count_unique(numbers) should
+return 3 because there are 3 unique values: 7, 2, and 1.
+"""
+
+def count_unique(num):
+    unique_num = []
+    for n in num:
+        if n not in unique_num:
+            unique_num.append(n)
+    return len(unique_num)
+
+"""
+Write a function named double_list that takes a list of strings as a parameter and that replaces every
+string with two of that string. For example, if the list stores the values ["how", "are", "you?"]
+before the function is called, it should store the values ["how", "how", "are", "are", "you?", "you?"]
+after the function finishes executing.
+"""
+
+def double_list(words):
+    double_words = []
+    for word in words:
+        double_words.append(word)
+        double_words.append(word)
+    return double_words
+
+"""
+Write a function is_palindrome that accepts a list of strings as its argument and returns True if that
+list is a palindrome (if it reads the same forwards as backwards) and False if not. The list
+["alpha", "beta", "gamma", "delta", "gamma", "beta", "alpha"] is a palindrome, so passing that list to
+your function would return True. Lists with zero or one element are considered to be palindromes.
+"""
+
+def is_palindrome(words):
+    if len(words) == 0 or len(words) == 1:
+        return True
+    i = 0
+    j = 1
+    while i < len(words):
+        if words[i] != words[-j]:
+            return False
+        i += 1
+        j += 1
+    return True
+
+"""
+Write a function named is_sorted that accepts a list of real numbers as a parameter and returns True
+if the list is in sorted (nondecreasing) order and False otherwise. For example, if lists named a and
+and b store [16.1, 12.3, 22.2, 14.4] and [1.5, 4.3, 7.0, 19.5, 25.1, 46.2] respectively, the calls
+is_sorted(a) and is_sorted(b) should return False and True respectively. Assume the list has at least
+one element. A one-element list is considered to be sorted.
+"""
+
+def is_sorted(num):
+    if len(num) == 1:
+        return True
+    i = 0
+    while i < len(num) - 1:
+        if num[i] > num[i + 1]:
+            return False
+        i += 1
+    return True
+
+"""
+Write a function named split that accepts a list of integers as a parameter and returns a new list
+twice as large as the original, replacing every integer from the original list with a pair of integers,
+each half the original. If a number in the original list is odd, then the first number in the new pair
+should be one higher than the second so that the sum equals the original number. For example, if a
+variable named a refers to a list storing the values [18, 7, 4, 24, 11], the call of split(a) should
+return a new list containing [9, 9, 4, 3, 2, 2, 12, 12, 6, 5].
+"""
+
+def split(num):
+    split_num = []
+    for n in num:
+        div = int(n / 2)
+        if n % 2 == 0:
+            split_num.append(div)
+            split_num.append(div)
+        else:
+            split_num.append(div + 1)
+            split_num.append(div)
+    return split_num
+print(split([18, 9]))
