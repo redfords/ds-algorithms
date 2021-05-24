@@ -221,4 +221,46 @@ def split(num):
             split_num.append(div + 1)
             split_num.append(div)
     return split_num
-print(split([18, 9]))
+
+"""
+Write a function named longest_sorted_sequence that accepts a list of integers as a parameter and
+that returns the length of the longest sorted (nondecreasing) sequence of integers in the list.
+"""
+
+def longest_sorted_sequence(num):
+    seq = 1
+    longest_seq = 1
+    
+    if len(num) == 0:
+        return 0
+
+    for n in range(len(num) - 1):
+        if num[n] <= num[n + 1]:
+            seq += 1
+        if num[n] > num[n + 1] or n == len(num) - 2:
+            if seq > longest_seq:
+                longest_seq = seq
+            seq = 1
+    return longest_seq
+
+"""
+Write a function price_is_right that accepts a list of integers bids and an integer price as
+parameters. The function returns the element in the bids list that is closest in value to price
+without being larger than price. For example, if bids stores the elements [200, 300, 250, 999, 40],
+then price_is_right(bids, 280) should return 250, since 250 is the bid closest to 280 without going
+over 280. If all bids are larger than price, then your function should return -1.
+"""
+
+def price_is_right(bids, price):
+    new_bids = []
+
+    for bid in bids:
+        if bid == price:
+            return bid
+        elif bid < price:
+            new_bids.append(bid)
+
+    if len(new_bids) == 0:
+        return -1
+    else:
+        return max(new_bids)
