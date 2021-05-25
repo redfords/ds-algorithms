@@ -1,4 +1,5 @@
-""" Take the following string: str = 'X-DSPAM-Confidence:0.8475'
+"""
+Take the following string: str = 'X-DSPAM-Confidence:0.8475'
 Extract the portion of the string after the colon character and
 convert the extracted string into a floating point number.
 """
@@ -7,7 +8,8 @@ def convert_to_float(str):
     atpos = str.find(':')
     print(float(str[atpos+1:]))
 
-""" Write a program to read through a file and print the contents
+"""
+Write a program to read through a file and print the contents
 of the file (line by line) all in upper case.
 
 python shout.py
@@ -31,7 +33,8 @@ def uppercase():
             ly = lx.rstrip()
             print(ly.upper())
 
-""" Write a program to prompt for a file name, and then read through the
+"""
+Write a program to prompt for a file name, and then read through the
 file and look for lines of the form:
 
 X-DSPAM-Confidence: 0.8475

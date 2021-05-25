@@ -1,4 +1,5 @@
-""" Shakespeare used over 20,000 words in his works. But how would you
+"""
+Shakespeare used over 20,000 words in his works. But how would you
 determine that? Download a copy of the file www.py4e.com/code3/romeo.txt.
 List all unique words, sorted in alphabetical order, that are stored in
 the file containing a subset of Shakespeare’s work.

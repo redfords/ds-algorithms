@@ -37,7 +37,8 @@ dict_keys(['Back in Black', 'The Bodyguard', 'Thriller'])
 album_sales_dict.values()
 dict_values([50, 50, 65])
 
-""" Text Analysis 
+"""
+Text Analysis 
 You have been recruited by your friend, a linguistics enthusiast, to create a utility tool that can
 perform analysis on a given piece of text.
 ​
@@ -46,7 +47,8 @@ following punctuation is used: period (.), exclamation mark (!), comma (,) and q
 
 freqAll - returns a dictionary of all unique words along with the number of their occurences.
 
-freqOf - returns the frequency of the word passed in argument. """
+freqOf - returns the frequency of the word passed in argument.
+"""
 
 class analysedText(object):
     def __init__(self, text):
@@ -75,7 +77,10 @@ class analysedText(object):
         else:
             return 0
 
-sample = "Lorem ipsum dolor! diam amet, consetetur Lorem magna. sed diam nonumy eirmod tempor. diam et labore? et diam magna. et diam amet."
+sample = """
+Lorem ipsum dolor! diam amet, consetetur Lorem magna. sed diam nonumy eirmod tempor.
+diam et labore? et diam magna. et diam amet.
+"""
 t1 = analysedText(sample)
 print(t1.fmtText)
 print(t1.freqAll())

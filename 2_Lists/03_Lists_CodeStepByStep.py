@@ -1,4 +1,5 @@
-""" Write a function named all_less that accepts two lists of integers and returns True
+"""
+Write a function named all_less that accepts two lists of integers and returns True
 if each element in the first list is less than the element at the same index in the
 second list. Your function should return false if the lists are not the same length.
 """

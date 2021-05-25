@@ -1,4 +1,5 @@
-""" Return the most frequent word in a file and the number of occurrences.
+"""
+Return the most frequent word in a file and the number of occurrences.
 """
 
 def most_frequent_word():
@@ -21,7 +22,8 @@ def most_frequent_word():
     print(bigword, bigcount)
 
 
-""" Write a program to read through a mail log, and return how many messages have
+"""
+Write a program to read through a mail log, and return how many messages have
 come from each email address.
 
 Enter file name: mbox-short.txt
@@ -50,7 +52,8 @@ def no_of_emails():
     handle.close()
 
 
-""" Write a program that reads a file and prints the letters in decreasing order
+"""
+Write a program that reads a file and prints the letters in decreasing order
 of frequency. Your program should convert all the input to lower case and only
 count the letters a-z. Your program should not count spaces, digits, punctuation,
 or anything other than the letters a-z.
