@@ -158,3 +158,15 @@ n 1
 o 1
 t 2
 """
+
+def start_letters(file_name):
+    handle = open(file_name)
+    counts = dict()
+    for line in handle:
+        words = line.split()
+        for word in words:
+            counts[word[0]] = counts.get(word[0], 0) + 1
+
+    return counts
+
+print(start_letters('words.txt'))
