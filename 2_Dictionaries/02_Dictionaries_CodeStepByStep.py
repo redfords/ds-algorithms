@@ -86,7 +86,21 @@ Entry [Bob] has count 2
 Entry [Chelsea] has count 1
 """
 
+def count_names():
+    names = []
+    new_name = '...'
+    count = dict()
 
+    while new_name != '':
+        new_name = input("Enter name: ")
+        if new_name != '':
+            names.append(new_name)
+    
+    for name in names:
+        count[name] = count.get(name, 0) + 1
+
+    for key, value in count.items():
+        print(f"Entry [{key}] has count {value}")
 
 """
 Write a function named deans_list that accepts as a parameter a dictionary of student names mapped
@@ -100,7 +114,14 @@ Then the call of deans_list(grades) should return the following set:
 If the passed in dictionary is empty, your function should return an empty set.
 """
 
+def deans_list(student_gpa):
+    gpa_list = set()
+    for student, gpa in student_gpa.items():
+        if gpa >= 3.5:
+            gpa_list.add(student)
+    return gpa_list
 
+student_gpa = {"Hermione": 4, "Harry": 3.4, "Ron": 3.4, "Ginny": 3.8, "Draco": 3.7}
 
 """
 Write a function named friend_list that accepts a file name as a parameter and reads friend
