@@ -132,7 +132,15 @@ would return True because both 'Jessica' and 'Meghan' map to the value 'Miller'.
 passed an empty or one-element dictionary.
 """
 
+def has_duplicate_value(dictionary):
+    if len(dictionary) <= 1:
+        return False
+    else:
+        values = list(dictionary.values())
+        no_duplicates = list(set(dictionary.values()))
+        return len(values) > len(no_duplicates)
 
+dictionary = {'Stuart': 'Reges', 'Jessica': 'Miller', 'Amanda': 'Camp', 'Meghan': 'Miller'}
 
 """
 Write a function named is_sub_dict that accepts two dictionaries from strings to strings as its
@@ -145,7 +153,12 @@ map2: {Marty': '206-9024', 'Hawking': '123-4567', 'Smith': '949-0504', 'Newton':
 Constraints: You may not declare any auxiliary data structures in solving this problem.
 """
 
+def is_sub_dict(sub_dict, dictionary):
+    # return sub_dict.items() <= dictionary.items()
+    return all(item in dictionary.items() for item in sub_dict.items())
 
+dictionary = {'Marty': '206-9024', 'Hawking': '123-4567', 'Smith': '949-0504', 'Newton': '123-4567'}
+sub_dict = {'Smith': '949-0504', 'Marty': '206-9024'}
 
 """
 Write a function named start_letters that accepts a file name as a parameter, reads the text file,
@@ -168,5 +181,3 @@ def start_letters(file_name):
             counts[word[0]] = counts.get(word[0], 0) + 1
 
     return counts
-
-print(start_letters('words.txt'))
