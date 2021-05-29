@@ -1,7 +1,6 @@
 """
 Write a function named area_codes that prints information about the most commonly occurring area
-code in a file of telephone numbers. Your function accepts a string parameter representing a
-filename of input.
+code in a file of telephone numbers.
 
 The input file contains a collection of telephone numbers, one per line, in the following format.
 Each phone number begins with a three-digit area code.
@@ -31,14 +30,28 @@ of area_codes("phonenumbers.txt") should print the following console output:
 206-685-2181
 """
 
+def area_codes(file_name):
+    handle = open(file_name)
+    lines = list()
+    count = dict()
 
+    for line in handle:
+        lines.append(line[: 12])
+        count[line[: 3]] = count.get(line[: 3], 0) + 1
+
+    max_key = max(count, key = count.get)
+
+    for line in lines:
+        if line[: 3] == max_key:
+            print(line)
+
+# area_codes('codes.txt')
 
 """
 Write a function named biggest_family that reads an input file of people's names and prints
-information about which family has the most people in it. Your function accepts a string parameter
-representing a filename of input.
+information about which family has the most people in it.
 
-Each line of the file contains a first name (given name), a single space, and a last name.
+Each line of the file contains a first name, a single space, and a last name.
 
 Jon Snow
 Ned Stark
@@ -195,10 +208,12 @@ t 2
 
 def start_letters(file_name):
     handle = open(file_name)
-    counts = dict()
+    count = dict()
     for line in handle:
         words = line.split()
         for word in words:
-            counts[word[0]] = counts.get(word[0], 0) + 1
+            count[word[0]] = count.get(word[0], 0) + 1
 
-    return counts
+    return count
+
+letter_count = start_letters('words.txt')
