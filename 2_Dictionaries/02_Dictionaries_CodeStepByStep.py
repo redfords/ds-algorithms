@@ -36,7 +36,7 @@ def area_codes(file_name):
     count = dict()
 
     for line in handle:
-        lines.append(line[: 12])
+        lines.append(line)
         count[line[: 3]] = count.get(line[: 3], 0) + 1
 
     max_key = max(count, key = count.get)
@@ -79,7 +79,26 @@ Lannister family: Cersei Jaime Tyrion
 Stark family: Arya Catelyn Ned
 """
 
+def biggest_family(file_name):
+    handle = open(file_name)
+    lines = list()
+    count = dict()
 
+    for line in handle:
+        name = line.split()
+        lines.append(name)
+        count[name[1]] = count.get(name[1], 0) + 1
+
+    max_value = max(count.values())
+    max_keys = list(key for key, value in count.items() if value == max_value)
+
+    for key in max_keys:
+        print(f"{key} family:")
+        for line in lines:
+            if line[1] == key:
+                print(line[0])
+
+# biggest_family('family.txt')
 
 """
 Write a complete console program that asks the user for a list of names (one per line) until the
