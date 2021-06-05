@@ -121,20 +121,12 @@ call of count_duplicates() should return 6 because there are three duplicates of
 duplicate of the value 2, and two duplicates of the value 4.
 """
 
-def count_duplicates(num):
-    duplicates = 0
-    i = 0
-    while i < len(num) - 1:
-        if num[i] in num[i + 1:]:
-            duplicates += 1
-            remove_num = num[i]
-            for n in num[i + 1:]:
-                if n == num[i]: 
-                    duplicates += 1
-            while remove_num in num:
-                num.remove(remove_num)
-        i += 1
-    return duplicates
+def count_duplicates(numbers):
+    n_set = set()
+    for n in numbers:
+        if numbers.count(n) > 1:
+            n_set.add(n)
+    return len(n_set)
 
 """
 Write a function named count_unique that accepts a list of integers as a parameter and returns a
