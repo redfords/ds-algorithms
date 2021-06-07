@@ -282,12 +282,10 @@ If we add all these together we get 1 + 4 + 2 + 5 + 3 + 7 + 11 + 10 + 15 = 58
 """
 
 def sumOddLengthSubarrays(arr):
-    sum_arr = sum(arr)
-    if len(arr) > 2:
-        for n in range(2, len(arr), 2):
-            print(n, '*')
-            for index in range(n):
-                print(index)
-
-arr = [1,4,2,5,3]
-sumOddLengthSubarrays(arr)
+    arr_sum = 0
+    for i in range(len(arr)):
+        j = i + 1
+        while j <= len(arr):
+            arr_sum += sum(arr[i : j])
+            j += 2
+    return arr_sum
