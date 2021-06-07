@@ -1,3 +1,5 @@
+from functools import reduce
+
 """
 Running Sum of 1d Array
 Given an array nums. We define a running sum as runningSum[i] = sum(nums[0]…nums[i]).
@@ -173,5 +175,119 @@ def decompressRLElist(nums):
         decomp += [nums[i + 1]] * nums[i]
     return decomp
 
-nums = [1,2,3,4]
-print(decompressRLElist(nums))
+"""
+Create Target Array in the Given Order
+Given two arrays of integers nums and index. Your task is to create target array under the
+following rules:
+Initially target array is empty. From left to right read nums[i] and index[i], insert at index
+index[i] the value nums[i] in target array.
+Repeat the previous step until there are no elements to read in nums and index.
+Return the target array.
+
+Example 1:
+Input: nums = [0,1,2,3,4], index = [0,1,2,2,1]
+Output: [0,4,1,3,2]
+Explanation:
+nums       index     target
+0            0        [0]
+1            1        [0,1]
+2            2        [0,1,2]
+3            2        [0,1,3,2]
+4            1        [0,4,1,3,2]
+"""
+
+def createTargetArray(nums, index):
+    order_nums = list()
+    for i in range(len(nums)):
+        order_nums.insert(index[i], nums[i])
+    return order_nums
+
+"""
+Count Items Matching a Rule
+You are given an array items, where each items[i] = [typei, colori, namei] describes the type,
+color, and name of the ith item. You are also given a rule represented by two strings, ruleKey
+and ruleValue.
+The ith item is said to match the rule if one of the following is true:
+ruleKey == "type" and ruleValue == typei.
+ruleKey == "color" and ruleValue == colori.
+ruleKey == "name" and ruleValue == namei.
+Return the number of items that match the given rule.
+
+Example 1:
+Input: items = [["phone","blue","pixel"],["laptop","silver","dell"],["phone","gold","iphone"]],
+ruleKey = "color", ruleValue = "silver"
+Output: 1
+Explanation: There is only one item matching the given rule, which is ["laptop","silver","dell"].
+"""
+
+def countMatches(items, ruleKey, ruleValue):
+    count = 0
+    match = -1
+        
+    if ruleKey == "type":
+        match = 0
+    if ruleKey == "color":
+        match = 1
+    if ruleKey == "name":
+        match = 2
+        
+    for item in items:
+        if item[match] == ruleValue:
+            count += 1
+    return count
+
+items = [["phone","blue","pixel"],["laptop","silver","dell"],["phone","gold","iphone"]]
+ruleKey = "color"
+ruleValue = "silver"
+
+"""
+XOR Operation in an Array
+Given an integer n and an integer start.
+Define an array nums where nums[i] = start + 2*i (0-indexed) and n == nums.length.
+Return the bitwise XOR of all elements of nums.
+
+Example 1:
+Input: n = 5, start = 0
+Output: 8
+Explanation: Array nums is equal to [0, 2, 4, 6, 8] where (0 ^ 2 ^ 4 ^ 6 ^ 8) = 8.
+Where "^" corresponds to bitwise XOR operator.
+"""
+
+def xorOperation(n, start):
+    numbers = list()
+    for num in range(start, start + (2 * n), 2):
+        numbers.append(num)
+    return reduce(lambda x, y: x ^ y, numbers)
+
+"""
+Sum of All Odd Length Subarrays
+Given an array of positive integers arr, calculate the sum of all possible odd-length subarrays.
+A subarray is a contiguous subsequence of the array.
+Return the sum of all odd-length subarrays of arr.
+
+Example 1:
+Input: arr = [1,4,2,5,3]
+Output: 58
+Explanation: The odd-length subarrays of arr and their sums are:
+[1] = 1
+[4] = 4
+[2] = 2
+[5] = 5
+[3] = 3
+[1,4,2] = 7
+[4,2,5] = 11
+[2,5,3] = 10
+[1,4,2,5,3] = 15
+If we add all these together we get 1 + 4 + 2 + 5 + 3 + 7 + 11 + 10 + 15 = 58
+"""
+
+def sumOddLengthSubarrays(arr):
+    sum_arr = sum(arr)
+    if len(arr) > 2:
+        for n in range(2, len(arr), 2):
+            print(n, '*')
+            for index in range(n):
+                print(index)
+
+arr = [1,4,2,5,3]
+sumOddLengthSubarrays(arr)
