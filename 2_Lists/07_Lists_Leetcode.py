@@ -289,3 +289,37 @@ def sumOddLengthSubarrays(arr):
             arr_sum += sum(arr[i : j])
             j += 2
     return arr_sum
+
+"""
+Count Good Triplets
+Given an array of integers arr, and three integers a, b and c. You need to find the number of
+good triplets. A triplet (arr[i], arr[j], arr[k]) is good if the following conditions are true:
+
+0 <= i < j < k < arr.length
+|arr[i] - arr[j]| <= a
+|arr[j] - arr[k]| <= b
+|arr[i] - arr[k]| <= c
+Where |x| denotes the absolute value of x.
+Return the number of good triplets.
+
+Example 1:
+Input: arr = [3,0,1,1,9,7], a = 7, b = 2, c = 3
+Output: 4
+Explanation: There are 4 good triplets: [(3,0,1), (3,0,1), (3,1,1), (0,1,1)].
+"""
+
+def countGoodTriplets(arr, a, b, c):
+    good_triplets = 0
+    for i in range(len(arr) - 2):
+        for j in range(i + 1, len(arr) - 1):
+            if abs(arr[i] - arr[j]) <= a:
+                for k in range(j + 1, len(arr)):
+                    if abs(arr[j] - arr[k]) <= b and abs(arr[k] - arr[i]) <= c:
+                        good_triplets += 1
+    return good_triplets
+
+# arr = [7,3,7,3,12,1,12,2,3]
+# a = 5
+# b = 8
+# c = 1
+# print(countGoodTriplets(arr, a, b, c))
