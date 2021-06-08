@@ -547,8 +547,27 @@ Output: [4,2,4,2,3]
 
 def finalPrices(prices):
     final = list()
-    for i in range(len(prices) - 1):
-        
+    discount = 0
+    for i in range(len(prices)):
+        for j in range(i + 1, len(prices)):
+            if prices[j] <= prices[i]:
+                discount = prices[j]
+                break;
+        final.append(prices[i] - discount)
+        discount = 0
+    return final
 
-prices = [8,4,6,2,3]
-print(finalPrices(prices))
+"""
+Sum of Unique Elements
+You are given an integer array nums. The unique elements of an array are the elements that appear
+exactly once in the array.
+Return the sum of all the unique elements of nums.
+
+Example 1:
+Input: nums = [1,2,3,2]
+Output: 4
+Explanation: The unique elements are [1,3], and the sum is 4.
+"""
+
+def sumOfUnique(nums):
+    return sum([n for n in nums if nums.count(n) == 1])
