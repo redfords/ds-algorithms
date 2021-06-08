@@ -1,4 +1,5 @@
 from functools import reduce
+from itertools import accumulate
 
 """
 Running Sum of 1d Array
@@ -284,10 +285,8 @@ If we add all these together we get 1 + 4 + 2 + 5 + 3 + 7 + 11 + 10 + 15 = 58
 def sumOddLengthSubarrays(arr):
     arr_sum = 0
     for i in range(len(arr)):
-        j = i + 1
-        while j <= len(arr):
+        for j in range(i + 1, len(arr) + 1, 2):
             arr_sum += sum(arr[i : j])
-            j += 2
     return arr_sum
 
 """
@@ -323,3 +322,233 @@ def countGoodTriplets(arr, a, b, c):
 # b = 8
 # c = 1
 # print(countGoodTriplets(arr, a, b, c))
+
+"""
+Find the Highest Altitude
+There is a biker going on a road trip. The road trip consists of n + 1 points at different
+altitudes. The biker starts his trip on point 0 with altitude equal 0.
+You are given an integer array gain of length n where gain[i] is the net gain in altitude
+between points i​​​​​​ and i + 1 for all (0 <= i < n). Return the highest altitude of a point.
+
+Example 1:
+Input: gain = [-5,1,5,0,-7]
+Output: 1
+Explanation: The altitudes are [0,-5,-4,1,1,-6]. The highest is 1.
+
+Example 2:
+Input: gain = [-4,-3,-2,-1,4,3,2]
+Output: 0
+Explanation: The altitudes are [0,-4,-7,-9,-10,-6,-3,-1]. The highest is 0.
+"""
+
+def largestAltitude(gain):
+    return max(accumulate([0] + gain))
+
+"""
+Flipping an Image
+Given an n x n binary matrix image, flip the image horizontally, then invert it.
+To flip an image horizontally means that each row of the image is reversed.
+For example, flipping [1,1,0] horizontally results in [0,1,1].
+To invert an image means that each 0 is replaced by 1, and each 1 is replaced by 0.
+For example, inverting [0,1,1] results in [1,0,0].
+ 
+Example 1:
+Input: image = [[1,1,0],[1,0,1],[0,0,0]]
+Output: [[1,0,0],[0,1,0],[1,1,1]]
+Explanation: First reverse each row: [[0,1,1],[1,0,1],[0,0,0]].
+Then, invert the image: [[1,0,0],[0,1,0],[1,1,1]]
+"""
+
+def flipAndInvertImage(image):
+    reverse = list()
+    replace = {0: 1, 1: 0}
+    # for row in image:
+    #     reverse.append([replace.get(x, x) for x in row][: : -1])
+
+    return [[replace.get(x, x) for x in row][: : -1] for row in image]
+
+"""
+Cells with Odd Values in a Matrix
+There is an m x n matrix that is initialized to all 0's. There is also a 2D array indices where
+each indices[i] = [ri, ci] represents a 0-indexed location to perform some increment operations
+on the matrix.
+
+For each location indices[i], do both of the following:
+Increment all the cells on row ri.
+Increment all the cells on column ci.
+
+Given m, n, and indices, return the number of odd-valued cells in the matrix after applying the
+increment to all locations in indices.
+"""
+
+def oddCells(m, n, indices):
+    row = [0] * m
+    col = [0] * n
+
+    for x,y in indices:
+        row[x] += 1
+        col[y] += 1
+        
+    odd = 0
+    for i in range(m):
+        for j in range(n):   
+            if (row[i] + col[j]) % 2:
+                odd += 1
+    return odd
+
+# m = 2
+# n = 3
+# indices = [[0,1],[1,1]]
+# print(oddCells(m, n, indices))
+
+"""
+Find Numbers with Even Number of Digits
+Given an array nums of integers, return how many of them contain an even number of digits.
+"""
+
+def findNumbers(nums):
+    return sum(len(str(n)) % 2 == 0 for n in nums)
+
+"""
+Minimum Operations to Make the Array Increasing
+You are given an integer array nums (0-indexed). In one operation, you can choose an element of
+the array and increment it by 1.
+
+For example, if nums = [1,2,3], you can choose to increment nums[1] to make nums = [1,3,3].
+Return the minimum number of operations needed to make nums strictly increasing.
+
+An array nums is strictly increasing if nums[i] < nums[i+1] for all 0 <= i < nums.length - 1. An
+array of length 1 is trivially strictly increasing.
+
+Example 1:
+Input: nums = [1,1,1]
+Output: 3
+Explanation: You can do the following operations:
+1) Increment nums[2], so nums becomes [1,1,2].
+2) Increment nums[1], so nums becomes [1,2,2].
+3) Increment nums[2], so nums becomes [1,2,3].
+
+Example 2:
+Input: nums = [1,5,2,4,1]
+Output: 14
+"""
+
+def minOperations(nums):
+    ops = 0
+    for i in range(len(nums) - 1):
+        if nums[i + 1] <= nums[i]:
+            diff = nums[i] - nums[i + 1] + 1
+            nums[i + 1] += diff
+            ops += diff
+    return ops
+
+# nums = [1,5,2,4,1]
+# print(minOperations(nums))
+
+"""
+Maximum Product of Two Elements in an Array
+Given the array of integers nums, you will choose two different indices i and j of that array.
+Return the maximum value of (nums[i]-1)*(nums[j]-1).
+ 
+Example 1:
+Input: nums = [3,4,5,2]
+Output: 12 
+Explanation: If you choose the indices i=1 and j=2 (indexed from 0), you will get the maximum
+value, that is, (nums[1]-1)*(nums[2]-1) = (4-1)*(5-1) = 3*4 = 12.
+"""
+
+def maxProduct(nums):
+    i = max(nums)
+    nums.pop(nums.index(i))
+    j = max(nums)
+    return (i - 1) * (j - 1)
+
+"""
+Number of Students Doing Homework at a Given Time
+Given two integer arrays startTime and endTime and given an integer queryTime.
+The ith student started their homework at the time startTime[i] and finished it at time endTime[i].
+Return the number of students doing their homework at time queryTime. More formally, return the
+number of students where queryTime lays in the interval [startTime[i], endTime[i]] inclusive.
+
+Example 1
+Input: startTime = [1,2,3], endTime = [3,2,7], queryTime = 4
+Output: 1
+"""
+
+def busyStudent(startTime, endTime, queryTime):
+    return sum(queryTime in range(startTime[i], endTime[i] + 1) for i in range(len(startTime)))
+
+# startTime = [9,8,7,6,5,4,3,2,1]
+# endTime = [10,10,10,10,10,10,10,10,10]
+# queryTime = 5
+
+# print(busyStudent(startTime, endTime, queryTime))
+
+"""
+Find N Unique Integers Sum up to Zero
+Given an integer n, return any array containing n unique integers such that they add up to 0.
+
+Example 1:
+Input: n = 5
+Output: [-7,-1,1,3,4]
+Explanation: These arrays also are accepted [-5,-1,1,2,3] , [-3,-1,2,-2,4].
+
+Example 2:
+Input: n = 3
+Output: [-1,0,1]
+"""
+
+def sumZero(n):
+    if n % 2 == 0:
+        return [i for i in range(1, n, 2)] + [-i for i in range(1, n, 2)]
+    return [i for i in range(1, n, 2)] + [-i for i in range(1, n, 2)] + [0]
+
+"""
+Count Negative Numbers in a Sorted Matrix
+Given a m x n matrix grid which is sorted in non-increasing order both row-wise and column-wise,
+return the number of negative numbers in grid.
+
+Example 1:
+Input: grid = [[4,3,2,-1],[3,2,1,-1],[1,1,-1,-2],[-1,-1,-2,-3]]
+Output: 8
+Explanation: There are 8 negatives number in the matrix.
+"""
+
+def countNegatives(grid):
+    return sum(n < 0 for sub in grid for n in sub)
+
+"""
+Sort Array By Parity
+Given an array nums of non-negative integers, return an array consisting of all the even
+elements of nums, followed by all the odd elements of nums.
+ 
+Example 1:
+Input: nums = [3,1,2,4]
+Output: [2,4,3,1]
+The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted.
+"""
+
+def sortArrayByParity(nums):
+    return [n for n in nums if n % 2 == 0] + [n for n in nums if n % 2 != 0]
+
+"""
+Final Prices With a Special Discount in a Shop
+Given the array prices where prices[i] is the price of the ith item in a shop. There is a special
+discount for items in the shop, if you buy the ith item, then you will receive a discount
+equivalent to prices[j] where j is the minimum index such that j > i and prices[j] <= prices[i],
+otherwise, you will not receive any discount at all.
+Return an array where the ith element is the final price you will pay for the ith item of the shop
+considering the special discount.
+
+Example 1:
+Input: prices = [8,4,6,2,3]
+Output: [4,2,4,2,3]
+"""
+
+def finalPrices(prices):
+    final = list()
+    for i in range(len(prices) - 1):
+        
+
+prices = [8,4,6,2,3]
+print(finalPrices(prices))
