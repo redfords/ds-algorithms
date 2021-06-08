@@ -1,18 +1,12 @@
 """ 
 Given an array of ints, return the number of 9's in the array.
 
-array_count9([1, 2, 9]) → 1
 array_count9([1, 9, 9]) → 2
 array_count9([1, 9, 9, 3, 9]) → 3
 """
 
 def array_count9(nums):
-    count = 0
-    for num in nums:
-        if num == 9:
-            count += 1
-    return count
-
+    return sum(num == 9 for num in nums)
 
 """
 Given an array of ints, return True if one of the first 4 elements in the array is a 9.
@@ -61,14 +55,8 @@ string_match('abc', 'axc') → 0
 
 def string_match(a, b):
     length = min(len(a), len(b))
-    count = 0
-    for i in range(length - 1):
-        if a[i] + a[i+1] == b[i] + b [i+1]:
-            count += 1
-    
-    return count
+    return sum(a[i] + a[i+1] == b[i] + b [i+1] for i in range(length - 1))
 
-    
 """
 Given an array of ints length 3, return an array with the elements "rotated left"
 so {1, 2, 3} yields {2, 3, 1}.
@@ -79,10 +67,7 @@ rotate_left3([7, 0, 0]) → [0, 0, 7]
 """
 
 def rotate_nums(nums):
-    rotated = list()
-    rotated = nums[1:]
-    rotated.append(nums[0])
-    return rotated
+    return nums[1:] + [nums[0]]
 
 """
 Given an array length 1 or more of ints, return the difference between the largest
@@ -94,13 +79,7 @@ big_diff([2, 10, 7, 2]) → 8
 """
 
 def big_diff(nums):
-    max_num = nums[0]
-    min_num = nums[0]
-    for num in nums:
-        max_num = max(num, max_num)
-        min_num = min(num, min_num)
-    return max_num - min_num
-
+    return max(nums) - min(nums)
 
 """
 Return the "centered" average of an array of ints, which is the mean average of the
