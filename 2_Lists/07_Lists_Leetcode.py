@@ -571,3 +571,114 @@ Explanation: The unique elements are [1,3], and the sum is 4.
 
 def sumOfUnique(nums):
     return sum([n for n in nums if nums.count(n) == 1])
+
+"""
+Elements with Greatest Element on Right Side
+Given an array arr, replace every element in that array with the greatest element among the
+elements to its right, and replace the last element with -1.
+After doing so, return the array.
+
+Example 1:
+Input: arr = [17,18,5,4,6,1]
+Output: [18,6,6,6,1,-1]
+"""
+
+def replaceElements(arr):
+    for i in range(len(arr)):
+        right = arr[i + 1 :]
+        if not right:
+            arr[i] = -1
+        else:
+            arr[i] = max(right)
+    return arr
+
+"""
+Array Partition I
+Given an integer array nums of 2n integers, group these integers into n pairs (a1, b1), (a2, b2),
+..., (an, bn) such that the sum of min(ai, bi) for all i is maximized. Return the maximized sum.
+
+Example 1:
+Input: nums = [6,2,6,5,1,2]
+Output: 9
+Explanation: The optimal pairing is (2, 1), (2, 5), (6, 6).
+min(2, 1) + min(2, 5) + min(6, 6) = 1 + 2 + 6 = 9.
+"""
+
+def arrayPairSum(nums):
+    nums = sorted(nums, reverse = True)
+    return sum(nums[i] for i in range(1, len(nums), 2))
+
+"""
+Maximum Number of Balls in a Box
+You are working in a ball factory where you have n balls numbered from lowLimit up to highLimit
+inclusive (i.e., n == highLimit - lowLimit + 1), and an infinite number of boxes numbered from 1
+to infinity.
+
+Your job at this factory is to put each ball in the box with a number equal to the sum of digits
+of the ball's number. For example, the ball number 321 will be put in the box number 3 + 2 + 1 = 6
+and the ball number 10 will be put in the box number 1 + 0 = 1.
+
+Return the number of balls in the box with the most balls.
+
+Example 1:
+Input: lowLimit = 1, highLimit = 10
+Output: 2
+Explanation:
+Box Number:  1 2 3 4 5 6 7 8 9 10 11 ...
+Ball Count:  2 1 1 1 1 1 1 1 1 0  0  ...
+Box 1 has the most number of balls with 2 balls.
+"""
+
+def countBalls(lowLimit, highLimit):
+    count = dict()
+    for n in range(lowLimit, highLimit + 1):
+        r = 0
+        while n:
+            r, n = r + n % 10, n // 10
+        count[r] = count.get(r, 0) + 1
+    return max(count.values())
+
+"""
+Height Checker
+A school is trying to take an annual photo of all the students. They are asked to stand in a
+single file line in non-decreasing order by height. Let this ordering be represented by the
+integer array expected where expected[i] is the expected height of the ith student in line.
+You are given an integer array heights representing the current order that the students are
+standing in. Each heights[i] is the height of the ith student in line (0-indexed).
+Return the number of indices where heights[i] != expected[i].
+
+Example 1:
+Input: heights = [1,1,4,2,1,3]
+Output: 3
+Explanation: 
+heights:  [1,1,4,2,1,3]
+expected: [1,1,1,2,3,4]
+Indices 2, 4, and 5 do not match.
+"""
+
+def heightChecker(heights):
+    expected = sorted(heights)
+    return sum(heights[i] != expected[i] for i in range(len(heights)))
+
+"""
+Matrix Diagonal Sum
+Given a square matrix mat, return the sum of the matrix diagonals.
+Only include the sum of all the elements on the primary diagonal and all the elements on the
+secondary diagonal that are not part of the primary diagonal.
+
+Example 1:
+Input: mat = [[1,2,3],
+              [4,5,6],
+              [7,8,9]]
+Output: 25
+Explanation: Diagonals sum: 1 + 5 + 9 + 3 + 7 = 25
+Notice that element mat[1][1] = 5 is counted only once.
+"""
+
+def diagonalSum(mat):
+    pass
+
+mat = [[1,2,3],
+       [4,5,6],
+       [7,8,9]]
+print(diagonalSum(mat))
