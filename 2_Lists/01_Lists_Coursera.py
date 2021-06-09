@@ -1,3 +1,32 @@
+"""
+Shakespeare used over 20,000 words in his works. But how would you
+determine that? Download a copy of the file www.py4e.com/code3/romeo.txt.
+List all unique words, sorted in alphabetical order, that are stored in
+the file containing a subset of Shakespeare’s work.
+"""
+
+def count_unique_words():
+    unique_words = list()
+    words = list()
+
+    for line in fhand:
+        words = line.split()
+        for word in words:
+            if word not in unique_words:
+                unique_words.append(word)
+    unique_words.sort()
+    print(unique_words)
+
+fname = input('Enter a file name: ')
+try:
+    fhand = open(fname)
+except:
+    print('File cannot be opened', fname)
+    quit()
+
+count_unique_words()
+fhand.close()
+
 """ 
 Given an array of ints, return the number of 9's in the array.
 
@@ -26,7 +55,6 @@ def array_front9(nums):
             return True
     return False
 
-
 """
 Given an array of ints, return True if the sequence of numbers 1, 2, 3 is in the array.
 
@@ -39,7 +67,6 @@ def array123(nums):
         if nums[i] == 1 and nums[i+1] == 2 and nums[i+2] == 3:
             return True
     return False
-        
 
 """
 Given 2 strings, a and b, return the number of the positions where they contain the

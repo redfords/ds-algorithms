@@ -1,4 +1,68 @@
 """
+Take the following string: str = 'X-DSPAM-Confidence:0.8475'
+Extract the portion of the string after the colon character and
+convert the extracted string into a floating point number.
+"""
+
+def convert_to_float(str):
+    atpos = str.find(':')
+    print(float(str[atpos+1:]))
+
+"""
+Write a program to read through a file and print the contents
+of the file (line by line) all in upper case.
+
+python shout.py
+Enter a file name: mbox-short.txt
+FROM STEPHEN.MARQUARD@UCT.AC.ZA SAT JAN 5 09:14:16 2008
+RETURN-PATH:
+
+RECEIVED: FROM MURDER (MAIL.UMICH.EDU [141.211.14.90])
+BY FRANKENSTEIN.MAIL.UMICH.EDU (CYRUS V2.3.8) WITH LMTPA;
+SAT, 05 JAN 2008 09:14:16 -0500
+"""
+
+def uppercase():
+    fname = input('Enter a file name: ')
+    try:
+            fhand = open(fname)
+    except:
+            print('File cannot be opened', fname)
+            quit()
+    for lx in fhand:
+            ly = lx.rstrip()
+            print(ly.upper())
+
+"""
+Write a program to prompt for a file name, and then read through the
+file and look for lines of the form:
+
+X-DSPAM-Confidence: 0.8475
+
+When you reach the end of the file, print out the average spam confidence.
+"""
+
+def print_spam_avg():
+    sum = 0.0
+    count = 0
+    for line in fhand:
+        new_line = line.rstrip()
+        if new_line.startswith('X-DSPAM-Confidence:'):
+            count += 1
+            sum += float(new_line[new_line.find(' ')+1:])
+    print('Average spam confidence', sum / count)
+
+fname = input('Enter a file name: ')
+try:
+    fhand = open(fname)
+except:
+    print('File cannot be opened', fname)
+    quit()
+
+print_spam_avg()
+fhand.close()
+
+"""
 Given a string, return a new string where "not " has been added to the front.
 However, if the string already begins with "not", return the string unchanged.
 
@@ -13,7 +77,6 @@ def not_string(str):
     else:
         return 'not ' + str
 
-
 """
 Given a non-empty string and an int n, return a new string where the char at index n
 has been removed. The value of n will be a valid index of a char in the original string
@@ -26,7 +89,6 @@ missing_char('kitten', 4) → 'kittn'
 
 def missing_char(str, n):
     return str[:n] + str[n+1:]
-
 
 """
 Given a string, return a new string where the first and last chars have been exchanged.
@@ -45,7 +107,6 @@ def front_back(str):
         return str[len(str) - 1] + str[0]
     else:
         return str[len(str) - 1] + str[1:len(str) - 1] + str[0]
-
 
 """
 Given a string, we'll say that the front is the first 3 chars of the string.
@@ -68,10 +129,8 @@ def front3(str):
 Given a string and a non-negative int n, return a larger string that is n copies
 of the original string.
 
-
 string_times('Hi', 2) → 'HiHi'
 string_times('Hi', 3) → 'HiHiHi'
-string_times('Hi', 1) → 'Hi'
 """
 
 def string_times(str, n):
@@ -79,7 +138,6 @@ def string_times(str, n):
     for i in range(n):
         new_str = new_str + str
     return new_str
-
 
 """
 Given a string and a non-negative int n, we'll say that the front of the string
@@ -102,7 +160,6 @@ def front_times(str, n):
         new_str = new_str + front
     return new_str
 
-
 """
 Given a string, return a new string made of every other char starting with the first.
 
@@ -117,7 +174,6 @@ def string_bits(str):
         if i % 2 == 0:
             new_str = new_str + str[i]
     return new_str
-
     
 """
 Given a string, return a string where for every char in the original,
@@ -133,7 +189,6 @@ def double_char(str):
     for letter in str:
         new_str += letter + letter
     return new_str
-
 
 """
 Return the number of times that the string "hi" appears anywhere in the given string.
