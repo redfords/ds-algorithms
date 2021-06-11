@@ -708,3 +708,73 @@ target = [1,2,3,4]
 arr = [2,4,1,3]
 canBeEqual(target, arr)
 
+"""
+The K Weakest Rows in a Matrix
+You are given an m x n binary matrix mat of 1's (representing soldiers) and 0's (representing
+civilians). The soldiers are positioned in front of the civilians. That is, all the 1's will
+appear to the left of all the 0's in each row.
+A row i is weaker than a row j if one of the following is true:
+The number of soldiers in row i is less than the number of soldiers in row j.
+Both rows have the same number of soldiers and i < j.
+Return the indices of the k weakest rows in the matrix ordered from weakest to strongest.
+
+Example 1:
+Input: mat = 
+[[1,1,0,0,0],
+ [1,1,1,1,0],
+ [1,0,0,0,0],
+ [1,1,0,0,0],
+ [1,1,1,1,1]], 
+k = 3
+Output: [2,0,3]
+Explanation: 
+The number of soldiers in each row is: 
+- Row 0: 2 
+- Row 1: 4 
+- Row 2: 1 
+- Row 3: 2 
+- Row 4: 5 
+The rows ordered from weakest to strongest are [2,0,3,1,4].
+"""
+
+def kWeakestRows(mat, k):
+    soldiers = [row.count(1) for row in mat]
+    order = sorted(range(len(soldiers)), key = lambda k: soldiers[k])
+    return order[: k]
+
+"""
+Squares of a Sorted Array
+Given an integer array nums sorted in non-decreasing order, return an array of the squares of
+each number sorted in non-decreasing order.
+
+Example 1:
+Input: nums = [-4,-1,0,3,10]
+Output: [0,1,9,16,100]
+Explanation: After squaring, the array becomes [16,1,0,9,100].
+After sorting, it becomes [0,1,9,16,100].
+"""
+
+def sortedSquares(nums):
+    return sorted([n ** 2 for n in nums])
+
+"""
+Sort Array By Parity II
+Given an array of integers nums, half of the integers are odd, and the other half are even.
+Sort the array so that whenever nums[i] is odd, i is odd, and whenever nums[i] is even, i is even.
+Return any answer array that satisfies this condition.
+
+Example 1:
+Input: nums = [4,2,5,7]
+Output: [4,5,2,7]
+Explanation: [4,7,2,5], [2,5,4,7], [2,7,4,5] would also have been accepted.
+"""
+
+def sortArrayByParityII(nums):
+    odd = list()
+    even = list()
+    for n in nums:
+        if n % 2 == 0:
+            odd.append(n)
+        else:
+            even.append(n)
+    return [i for sublist in zip(odd, even) for i in sublist]
