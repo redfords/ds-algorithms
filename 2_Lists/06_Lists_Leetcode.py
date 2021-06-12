@@ -778,3 +778,180 @@ def sortArrayByParityII(nums):
         else:
             even.append(n)
     return [i for sublist in zip(odd, even) for i in sublist]
+
+"""
+Minimum Cost to Move Chips to The Same Position
+We have n chips, where the position of the ith chip is position[i].
+We need to move all the chips to the same position. In one step, we can change the position
+of the ith chip from position[i] to:
+position[i] + 2 or position[i] - 2 with cost = 0.
+position[i] + 1 or position[i] - 1 with cost = 1.
+Return the minimum cost needed to move all the chips to the same position.
+
+Example 1:
+Input: position = [1,2,3]
+Output: 1
+Explanation: First step: Move the chip at position 3 to position 1 with cost = 0.
+Second step: Move the chip at position 2 to position 1 with cost = 1.
+Total cost is 1.
+"""
+
+def minCostToMoveChips(position):
+    even_cost = 0
+    odd_cost = 0
+    for p in position:
+        if p % 2 == 0:
+            odd_cost += 1
+        else:
+            even_cost += 1
+    return min(even_cost, odd_cost)
+
+"""
+Can Make Arithmetic Progression From Sequence
+A sequence of numbers is called an arithmetic progression if the difference between any two
+consecutive elements is the same.
+Given an array of numbers arr, return true if the array can be rearranged to form an arithmetic
+progression. Otherwise, return false.
+
+Example 1:
+Input: arr = [3,5,1]
+Output: true
+Explanation: We can reorder the elements as [1,3,5] or [5,3,1] with differences 2 and -2
+respectively, between each consecutive elements.
+"""
+
+def canMakeArithmeticProgression(arr):
+    arr.sort()
+    dif = arr[1] - arr[0]
+    for i in range(len(arr) - 1):
+        if arr[i + 1] - arr[i] != dif:
+            return False
+    return True
+
+"""
+Lucky Numbers in a Matrix
+Given a m * n matrix of distinct numbers, return all lucky numbers in the matrix in any order.
+A lucky number is an element of the matrix such that it is the minimum element in its row and
+maximum in its column.
+
+Example 1:
+Input: matrix = [[3,7,8],[9,11,13],[15,16,17]]
+Output: [15]
+Explanation: 15 is the minimum in its row and the maximum in its column
+"""
+
+def luckyNumbers(matrix):
+    row_col = list()
+    max_col = [max(n) for n in zip(* matrix)]
+    for row in matrix:
+        min_row = min(row)
+        for i in range(len(row)):
+            if row[i] == min_row and row[i] == max_col[i]:
+                row_col.append(row[i])
+    return row_col
+
+"""
+Find Common Characters
+Given an array words of strings made only from lowercase letters, return a list of all characters
+that show up in all strings within the list (including duplicates).  For example, if a character
+occurs 3 times in all strings but not 4 times, you need to include that character three times in
+the final answer.
+You may return the answer in any order.
+
+Example 1:
+Input: ["bella","label","roller"]
+Output: ["e","l","l"]
+"""
+
+def commonChars(words):
+    common = set(words[0])
+    for w in words:
+        common = common.intersection(set(w))
+
+    final = list()
+    for ch in common:
+        mn = 0
+        for w in words:
+            if mn == 0 or w.count(ch) < mn:
+                mn = w.count(ch)
+        final.extend([ch] * mn)
+    return final
+
+"""
+Relative Sort Array
+Given two arrays arr1 and arr2, the elements of arr2 are distinct, and all elements in arr2 are
+also in arr1.
+
+Sort the elements of arr1 such that the relative ordering of items in arr1 are the same as in
+arr2. Elements that don't appear in arr2 should be placed at the end of arr1 in ascending order.
+
+Example 1:
+Input: arr1 = [2,3,1,3,2,4,6,7,9,2,19], arr2 = [2,1,4,3,9,6]
+Output: [2,2,2,1,4,3,3,9,6,7,19]
+"""
+
+def relativeSortArray(arr1, arr2):
+    ordered = [n for i in arr2 for n in arr1 if n == i]
+    extra = [n for n in arr1 if n not in arr2]
+    return ordered + sorted(extra)
+
+"""
+Average Salary Excluding the Minimum and Maximum Salary
+Given an array of unique integers salary where salary[i] is the salary of the employee i.
+Return the average salary of employees excluding the minimum and maximum salary.
+
+Example 1:
+Input: salary = [4000,3000,1000,2000]
+Output: 2500.00000
+Explanation: Minimum salary and maximum salary are 1000 and 4000 respectively.
+Average salary excluding minimum and maximum salary is (2000+3000)/2= 2500
+"""
+
+def average(salary):
+    salary.remove(min(salary))
+    salary.remove(max(salary))
+    return sum(salary) / len(salary)
+
+"""
+Find Words That Can Be Formed by Characters
+You are given an array of strings words and a string chars.
+A string is good if it can be formed by characters from chars (each char can only be used once).
+Return the sum of lengths of all good strings in words.
+
+Example 1:
+Input: words = ["cat","bt","hat","tree"], chars = "atach"
+Output: 6
+Explanation: 
+The strings that can be formed are "cat" and "hat" so the answer is 3 + 3 = 6.
+"""
+
+def countCharacters(words, chars):
+    total = 0
+    for word in words:
+        check = True
+        for ch in word:
+            if ch not in chars or word.count(ch) > chars.count(ch):
+                check = False
+        if check == True:
+            total += len(word)
+    return total
+
+"""
+Fibonacci Number
+The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence,
+such that each number is the sum of the two preceding ones, starting from 0 and 1. That is,
+F(0) = 0, F(1) = 1
+F(n) = F(n - 1) + F(n - 2), for n > 1.
+Given n, calculate F(n).
+
+Example 1:
+Input: n = 2
+Output: 1
+Explanation: F(2) = F(1) + F(0) = 1 + 0 = 1.
+"""
+
+def fib(n):
+    pass
+
+n = 2
+print(fib(n))
