@@ -100,3 +100,26 @@ list_2 = [4, 5, 6, 7, 8]
 list_3 = [ x * y for x in list_1 for y in list_2 if x > 0 if y % 2 == 0 ]
 
 # [4, 6, 8, 8, 12, 16, 12, 18, 24]
+
+# slicing
+start = 0
+stop = 2 # the first value that is not in the slice
+step = 1 # step is 1 by default
+
+a[start:stop]  # items start through stop-1
+a[start:]      # items start through the rest of the array
+a[:stop]       # items from the beginning through stop-1
+a[:]           # a copy of the whole array
+
+a[start:stop:step] # start through not past stop, by step
+
+# using negative numbers
+a[-1]    # last item in the array
+a[-2:]   # last two items in the array
+a[:-2]   # everything except the last two items
+
+# step may be a negative number:
+a[::-1]    # all items in the array, reversed
+a[1::-1]   # the first two items, reversed
+a[:-3:-1]  # the last two items, reversed
+a[-3::-1]  # everything except the last two items, reversed
