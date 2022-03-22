@@ -1,31 +1,15 @@
-/* json sample */
-/*
-{
-    "firstName": "Jane",
-    "lastName": "Doe",
-    "hobbies": ["running", "sky diving", "singing"],
-    "age": 35,
-    "children": [
-        {
-            "firstName": "Alice",
-            "age": 6
-        },
-        {
-            "firstName": "Bob",
-            "age": 8
-        }
-    ]
-}
-*/
-
 import json
+import requests
 
-data = {
-    "president": {
-        "name": "Zaphod Beeblebrox",
-        "species": "Betelgeusian"
-    }
+response = requests.get("https://jsonplaceholder.typicode.com/todos")
+todos = json.loads(response.text)
+
+"""
+{
+    "userId": 1,
+    "id": 1,
+    "title": "delectus aut autem",
+    "completed": false
 }
+"""
 
-with open("data_file.json", "w") as write_file:
-    json.dump(data, write_file
