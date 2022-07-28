@@ -25,3 +25,5 @@ Searching algorithms: linear search, binary search, jump search.
 [CodingBat](https://codingbat.com/python)
 
 [Leetcode Patterns](https://seanprashad.com/leetcode-patterns/)
+
+[Data Structures](https://www.youtube.com/playlist?list=PLDV1Zeh2NRsB6SWUrDFW2RmDotAfPbeHu) by William Fiset
