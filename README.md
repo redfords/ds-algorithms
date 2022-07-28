@@ -16,13 +16,11 @@ Searching algorithms: linear search, binary search, jump search.
 
 ## Resources
 
-[Techie Delight](https://www.techiedelight.com/list-of-problems/)
-
-[Data Structures and Algorithms in Python](https://www.abebooks.com/9788126562176/Data-Structures-Algorithms-Python-Michael-812656217X/plp) by Michael T. Goodrich
-
 [Big-O Cheat Sheet](https://www.bigocheatsheet.com/)
 
 [Grokking Algorithms](https://www.manning.com/books/grokking-algorithms) by Aditya Bhargava
+
+[Data Structures and Algorithms in Python](https://www.abebooks.com/9788126562176/Data-Structures-Algorithms-Python-Michael-812656217X/plp) by Michael T. Goodrich
 
 [CodingBat](https://codingbat.com/python)
 
