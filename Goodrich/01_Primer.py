@@ -17,6 +17,11 @@ returns True if k is even, and False otherwise. However, your function
 cannot use the multiplication, modulo, or division operators.
 """
 
+def is_even(k):
+    even = True
+    for i in range(k):
+        even = not even
+    return even
 
 """
 R-1.3 Write a short Python function, minmax(data), that takes a sequence of
@@ -41,6 +46,11 @@ R-1.4 Write a short Python function that takes a positive integer n and returns
 the sum of the squares of all the positive integers smaller than n.
 """
 
+def sum_squares(n):
+    total = 0
+    for i in range(n):
+        total += i * i
+    return total
 
 """
 R-1.5 Give a single command that computes the sum from Exercise R-1.4, rely-
