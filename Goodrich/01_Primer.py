@@ -8,6 +8,8 @@ values and returns True if n is a multiple of m, that is, n = mi for some
 integer i, and False otherwise.
 """
 
+def is_multiple(n, m):
+    return n % m == 0
 
 """
 R-1.2 Write a short Python function, is even(k), that takes an integer value and
