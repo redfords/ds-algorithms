@@ -25,6 +25,16 @@ form of a tuple of length two. Do not use the built-in functions min or
 max in implementing your solution.
 """
 
+def minmax(data):
+    min = data[0]
+    max = data[0]
+
+    for n in data[1:]:
+        if n < min:
+            min = n
+        if n > max:
+            max = n
+    return (min, max)
 
 """
 R-1.4 Write a short Python function that takes a positive integer n and returns
