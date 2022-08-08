@@ -2,6 +2,19 @@
 Reinforcement
 """
 
+# comprehension syntax
+
+# [ expression for value in iterable if condition ]
+
+# squares = [k k for k in range(1, n+1)]
+# factors = [k for k in range(1,n+1) if n % k == 0]
+
+# [ k k for k in range(1, n+1) ] list comprehension
+# { k k for k in range(1, n+1) } set comprehension
+# ( k k for k in range(1, n+1) ) generator comprehension
+# { k : k k for k in range(1, n+1) } dictionary comprehension
+
+
 """
 R-1.1 Write a short Python function, is multiple(n, m), that takes two integer
 values and returns True if n is a multiple of m, that is, n = mi for some
