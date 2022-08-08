@@ -71,6 +71,7 @@ ing on Python’s comprehension syntax and the built-in sum function.
 """
 
 
+
 """
 R-1.6 Write a short Python function that takes a positive integer n and returns
 the sum of the squares of all the odd positive integers smaller than n.
@@ -151,6 +152,8 @@ C-1.15 Write a Python function that takes a sequence of numbers and determines
 if all the numbers are different from each other (that is, they are distinct).
 """
 
+def is_different(seq):
+    return len(seq) == len(set(seq))
 
 """
 C-1.16 In our implementation of the scale function (page 25), the body of the loop
