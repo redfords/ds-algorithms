@@ -42,3 +42,25 @@ for user, num_complete in top_users:
     users.append(str(user))
 
 max_users = " and ".join(users)
+
+
+""" 
+JSON Parsing
+Source: https://github.com/chrhobbs/exercise-python-json-parsing
+
+Exercise 1
+Using data file 'interface-data.json', create output that resembles the following:
+
+Interface Status
+================================================================================
+DN                                                 Description           Speed    MTU  
+-------------------------------------------------- --------------------  ------  ------
+topology/pod-1/node-201/sys/phys-[eth1/33]                              inherit   9150 
+topology/pod-1/node-201/sys/phys-[eth1/34]                              inherit   9150 
+topology/pod-1/node-201/sys/phys-[eth1/35]                              inherit   9150 
+
+
+
+
+"""
+
