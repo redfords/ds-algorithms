@@ -60,7 +60,11 @@ topology/pod-1/node-201/sys/phys-[eth1/34]                              inherit 
 topology/pod-1/node-201/sys/phys-[eth1/35]                              inherit   9150 
 
 
+Exercise 2
+Use the data to create a similar table which displays the average / max number of
+passengers per month per airline traveling through BWI airport. Format number numbers
+to 2 decimal places as needed.
 
-
+Read from http://data.maryland.gov/api/views/6jva-hr4v/rows.json?accessType=DOWNLOAD
 """
 
