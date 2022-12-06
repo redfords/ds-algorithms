@@ -1,18 +1,18 @@
 import datetime
-from calendar import monthrange
 
-today = datetime.date.today()
-first = today.replace(day=1)
-last_month = first - datetime.timedelta(days=1)
-print(last_month)
+class SystemFiles():
+    def get_files():
+        files = list()
+        return files
 
+class Utils():
+    def get_last_month(self):
+        today = datetime.date.today()
+        first = today.replace(day=1)
+        last_month = first - datetime.timedelta(days=1)
+        return last_month
+    
+    def get_date_range(self):
+        pass
 
     
-# max_day = monthrange(year, month)[1] + 1
-# for d in range(1, max_day):
-#     print(d)
-
-# today = datetime.date.today()
-
-
-# print(last_month.strftime("%Y%m"))
