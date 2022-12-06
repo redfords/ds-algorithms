@@ -4,8 +4,6 @@ import sys, os, re
 class SystemFiles():
     def get_files(self, entidad):
         # path = "/home/goa/{}/link/transacciones_prima".format(entidad)
-
-        path = "./files"
         filename = '{}_omni_extract_'.format(entidad)
         patter = re.compile(filename + '(\d{8}).txt')
         files_in_server = list()
