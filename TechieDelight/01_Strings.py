@@ -3,7 +3,7 @@ import sys, os, re
 
 class SystemFiles():
     def get_files(self, entidad):
-        # path = "/home/goa/{}/link/transacciones_prima".format(entidad)
+        path = "/home/goa/{}/link/transacciones_prima".format(entidad)
         filename = '{}_omni_extract_'.format(entidad)
         patter = re.compile(filename + '(\d{8}).txt')
         files_in_server = list()
@@ -38,7 +38,6 @@ utilidades = Utils()
 
 last_month = utilidades.get_last_month()
 date_range = utilidades.get_date_range(last_month)
-
 files_in_server = system_files.get_files(entidad)
 
 for date in date_range:
