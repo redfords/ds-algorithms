@@ -49,7 +49,7 @@ def _fill_decimals(monto):
             pass
         return monto_final
 
-def execute(spark, fecha, fext, entidad, entorno, subent):
+def execute(spark, fecha, entidad, subent):
     udf_monto = udf(_format_monto, StringType())
     udf_fill = udf(_fill_decimals, StringType())
 
@@ -126,14 +126,13 @@ if __name__=="__main__":
     try:
         params = sys.argv[2].split("-")
         fecha = params[0].lower()
-        fext = fecha[2:8]
         entidad = params[1].lower()
         entorno = sys.argv[1].lower()
         subent = entorno[0:2]
 
         spark = _set_spark_session(entidad, fecha)
 
-        execute(spark, fecha, fext, entidad, entorno, subent)
+        execute(spark, fecha, entidad, subent)
 
     except Exception as e:
         print("Error de ejecucion: " + str(e))
