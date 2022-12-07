@@ -1,4 +1,5 @@
 from pyspark.sql import SparkSession
+import re
 
 def _set_spark_session(entidad, fecha):
     spark = SparkSession\
@@ -13,4 +14,23 @@ def _set_spark_session(entidad, fecha):
     return spark
 
 def _format_monto(monto):
-    pass
+    if re.match("^\d+?\.\d+?$", monto) is not None:
+        return str(monto)
+    output = ''
+    last_char = monto[-1]
+    valor = {
+        '0': '{',
+        '1': 'A',
+        '2': 'B',
+        '3': 'C',
+        '4': 'D',
+        '5': 'E',
+        '6': 'F',
+        '7': 'G',
+        '8': 'H',
+        '9': 'I'
+    }[last_char]
+    output = monto[:-1] + valor
+    return output
+
+    
