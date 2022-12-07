@@ -69,4 +69,9 @@ def execute(spark, fecha, fext, entidad, entorno, subent):
         FROM {0}_{1}_3ref.Can_Ges_Extract_Prima_Individuos_FT_Transacciones  WHERE fecha_proceso = {2} 
     """.format(subent, entidad, fecha))
 
-    
+    df.createOrReplaceTemplateView("df")
+    x = df.count()
+    print("Se levantaron esta cantidad de la 1ra de Ref: ")
+    print(x)
+    if x != 0:
+        
