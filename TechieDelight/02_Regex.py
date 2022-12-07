@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import udf
+from pyspark.sql.functions import udf, col, regexp_replace, lpad, lit
 from pyspark.sql.types import StringType
 import re, sys, os
 
@@ -77,6 +77,17 @@ def execute(spark, fecha, fext, entidad, entorno, subent):
     print(x)
     if x != 0:
 
+        df = df.withColumn("amt_1", udf_fill("amt_1"))
+        df = df.withColumn("amt_1", col("amt_1").cast(StringType()))
+        df = df.withColumn("amt_1", regexp_replace(col("amt_1"), "[\.]", ""))
+        df = df.withColumn("amt_1", lpad(udf_monto("amt_1"), 19, "0"))
+        df = df.withColumn("amt_2", udf_fill("amt_2"))
+        df = df.withColumn("amt_2", regexp_replace(col("amt_2"), "[\.]", ""))    
+        df = df.withColumn("amt_2", lpad(udf_monto("amt_2"), 19, "0")) 
+        df = df.withColumn("amt_3", udf_fill("amt_3"))   
+        df = df.withColumn("amt_3", regexp_replace(col("amt_3"), "[\.]", ""))     
+        df = df.withColumn("amt_3", lpad(udf_monto("amt_3"), 19, "0")) 
+        
         variables_seleccionadas = [
             'prefix', 'reg_len', 'reg_typ', 'dat_tim', 'rec_typ', 'auth_ppd', 'term_ln', 'term_fiid', 'term_id', 'crd_ln', 'crd_fiid', 'crd_pan',
             'mbr_num', 'brch_id', 'regn_id', 'user_fld1x', 'typ_cde', 'typ', 'rte_stat', 'originator', 'responder', 'entry_tim', 'exit_tim', 're_entry_tim', 'tran_dat',
@@ -90,6 +101,21 @@ def execute(spark, fecha, fext, entidad, entorno, subent):
             'cft2', 'tipo', 'numero', 'linea', 'filler_dt_2p', 'importe_percepcion', 'cotizacion_percepcion', 'porcentaje_percepcion', 'filler_dt_40', 
             'cbu','filler_f1_f2', 'emv_status', 'es_chip'
             ]
+
+        var_final = []
+        for var in variables_seleccionadas:
+            if var in df.columns:
+                var_final.append(var)
+
+        df = df.select(var_final)
+        df = df.withColumn("fecha_proceso", lit(fecha))
+        print("Insertando en la 2da de Ref: ")
+        print("""{0}_{1}_3ref.Can_Ges_Extract_Prima_Individuos_FT_Pre_Archivo""".format(subent,entidad))
+        df.write.insertInto(
+            "{0}_{1}_3ref.Can_Ges_Extract_Prima_Individuos_FT_Pre_Archivo".format(subent, entidad), overwrite=False
+        )
+        print("Inserto esta cantidad de rows: ")
+        print(df.count())
 
     else:
         print("No hay registros para levantar")
