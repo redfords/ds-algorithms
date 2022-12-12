@@ -50,7 +50,28 @@ def execute(spark, fecha, fext, entidad, entorno, subent):
         return output
 
     def _reverse_format_monto(monto_str):
-        pass
+        print("ingreso a _reverse_format_monto")
+        #if re.match("^\d+?\.\d+?$", monto) is not None:
+        #    print("not None")
+        #    return str(monto)
+        montoStr = str(montoStr)
+        last_char = montoStr[-1]
+        print("last_char:{}".format(last_char))
+        valor = {
+                '{': '0',
+                'A': '1',
+                'B': '2',
+                'C': '3',
+                'D': '4',
+                'E': '5',
+                'F': '6',
+                'G': '7',
+                'H': '8',
+                'I': '9'
+        }[last_char]
+        output = montoStr[:-2] +"."+ montoStr[-2] + valor
+        print("output:{}".format(output))
+        return output
 
     def _generate_spin_off(final_data, fecha_extract, entity, outdat):
         pass
