@@ -50,11 +50,11 @@ def execute(spark, fecha, fext, entidad, entorno, subent):
         return output
 
     def _reverse_format_monto(monto_str):
-        print("ingreso a _reverse_format_monto")
+        # print("ingreso a _reverse_format_monto")
 
         monto_str = str(monto_str)
         last_char = monto_str[-1]
-        print("last_char:{}".format(last_char))
+        # print("last_char:{}".format(last_char))
         valor = {
                 '{': '0',
                 'A': '1',
@@ -67,8 +67,9 @@ def execute(spark, fecha, fext, entidad, entorno, subent):
                 'H': '8',
                 'I': '9'
         }[last_char]
+
         output = monto_str[:-2] +"."+ monto_str[-2] + valor
-        print("output:{}".format(output))
+        # print("output:{}".format(output))
         return output
 
     def _generate_spin_off(final_data, fecha_extract, entity, outdat):
