@@ -2,6 +2,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import (
     col,
     udf,
+    lit,
 )
 from pyspark.sql.types import (
     DecimalType,
@@ -101,7 +102,7 @@ def execute(spark, fecha, fext, entidad, entorno, subent):
         amt = amt.groupby().sum("amt")
         amt = amt.withColumn("amt", col("sum(amt)").cast(DecimalType(17,2))).withColumn("x", lit("1"))
 
-        
+
 
 
     def _header_and_trailer(final_df, fecha_extract, name, entity, outdat):
