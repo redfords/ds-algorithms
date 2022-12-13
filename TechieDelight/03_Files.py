@@ -1,4 +1,12 @@
 from pyspark.sql import SparkSession
+from pyspark.sql.functions import (
+    col,
+    udf,
+)
+from pyspark.sql.types import (
+    DecimalType,
+    StringType,
+)
 import sys, os
 
 def _set_spark_session(entidad,fecha):
@@ -72,17 +80,29 @@ def execute(spark, fecha, fext, entidad, entorno, subent):
         # print("output:{}".format(output))
         return output
 
-    def _generate_spin_off(final_data, fecha_extract, entity, outdat):
-        parseo = final_data.select([col(c).cast("string") for c in final_data.columns])
-        path_spin_off = 'hdfs://' + outdat + '/spin_off/spin_off_reborn_{}_{}'.format(entity, fecha_extract)
-        parseo.coalesce(1).write.option("sep", "|").format("com.databricks.spark.csv").option("header", "false").option(
-                    "ignoreLeadingWhiteSpace", "false").option("ignoreTrailingWhiteSpace", "false").mode("append").save(path_spin_off)
+    def _generate_spin_off(final_data, fecha, entity, outdat):
+        parseo = final_data.select([
+            col(c).cast("string") for c in final_data.columns
+            ])
+        path_spin_off = 'hdfs://' + outdat + '/spin_off/spin_off_{}_{}'.format(entity, fecha)
+        parseo.coalesce(1).write.option("sep", "|").format("com.databricks.spark.csv").option(
+            "header", "false").option("ignoreLeadingWhiteSpace", "false").option(
+            "ignoreTrailingWhiteSpace", "false").mode("append").save(path_spin_off)
 
-        print("El spinoff de fecha: {} y entidad: {} se genero correctamente".format(fecha_extract, entity))
+        print("El spinoff de fecha: {} y entidad: {} se genero correctamente".format(fecha, entity))
         return path_spin_off
 
-    def _generate_header_trailer(final_df, fecha_extract, name):
-        pass
+    def _generate_header_trailer(final_df, fecha, name):
+        udf_format_rev_monto = udf(_reverse_format_monto)  
+        amt = final_df.withColumn("amt", udf_format_rev_monto("amt_1").cast(DecimalType(17,2)))
+
+        print("Total trxs levantadas:")
+        print(amt.count())
+        amt = amt.groupby().sum("amt")
+        amt = amt.withColumn("amt", col("sum(amt)").cast(DecimalType(17,2))).withColumn("x", lit("1"))
+
+        
+
 
     def _header_and_trailer(final_df, fecha_extract, name, entity, outdat):
         pass
