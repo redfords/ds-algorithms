@@ -73,7 +73,13 @@ def execute(spark, fecha, fext, entidad, entorno, subent):
         return output
 
     def _generate_spin_off(final_data, fecha_extract, entity, outdat):
-        pass
+        parseo = final_data.select([col(c).cast("string") for c in final_data.columns])
+        path_spin_off = 'hdfs://' + outdat + '/spin_off/spin_off_reborn_{}_{}'.format(entity, fecha_extract)
+        parseo.coalesce(1).write.option("sep", "|").format("com.databricks.spark.csv").option("header", "false").option(
+                    "ignoreLeadingWhiteSpace", "false").option("ignoreTrailingWhiteSpace", "false").mode("append").save(path_spin_off)
+
+        print("El spinoff de fecha: {} y entidad: {} se genero correctamente".format(fecha_extract, entity))
+        return path_spin_off
 
     def _generate_header_trailer(final_df, fecha_extract, name):
         pass
