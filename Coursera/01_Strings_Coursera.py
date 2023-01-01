@@ -1,7 +1,6 @@
 """
-Take the following string: str = 'X-DSPAM-Confidence:0.8475'
-Extract the portion of the string after the colon character and
-convert the extracted string into a floating point number.
+Take the following string: str = 'X-DSPAM-Confidence:0.8475' Extract the portion of the
+string after the colon character and convert the extracted string into a floating point number.
 """
 
 def convert_to_float(str):
@@ -9,8 +8,7 @@ def convert_to_float(str):
     print(float(str[atpos+1:]))
 
 """
-Write a program to read through a file and print the contents
-of the file (line by line) all in upper case.
+Write a program to read through a file and print the contents of the file (line by line) all in upper case.
 
 python shout.py
 Enter a file name: mbox-short.txt
@@ -34,8 +32,7 @@ def uppercase():
             print(ly.upper())
 
 """
-Write a program to prompt for a file name, and then read through the
-file and look for lines of the form:
+Write a program to prompt for a file name, and then read through the file and look for lines of the form:
 
 X-DSPAM-Confidence: 0.8475
 
@@ -109,9 +106,8 @@ def front_back(str):
         return str[len(str) - 1] + str[1:len(str) - 1] + str[0]
 
 """
-Given a string, we'll say that the front is the first 3 chars of the string.
-If the string length is less than 3, the front is whatever is there.
-Return a new string which is 3 copies of the front.
+Given a string, we'll say that the front is the first 3 chars of the string. If the string length is
+less than 3, the front is whatever is there. Return a new string which is 3 copies of the front.
 
 front3('Java') → 'JavJavJav'
 front3('Chocolate') → 'ChoChoCho'
@@ -140,9 +136,8 @@ def string_times(str, n):
     return new_str
 
 """
-Given a string and a non-negative int n, we'll say that the front of the string
-is the first 3 chars, or whatever is there if the string is less than length 3.
-Return n copies of the front;
+Given a string and a non-negative int n, we'll say that the front of the string is the first 3 chars,
+or whatever is there if the string is less than length 3. Return n copies of the front;
 
 front_times('Chocolate', 2) → 'ChoCho'
 front_times('Chocolate', 3) → 'ChoChoCho'
@@ -176,8 +171,7 @@ def string_bits(str):
     return new_str
     
 """
-Given a string, return a string where for every char in the original,
-there are two chars.
+Given a string, return a string where for every char in the original, there are two chars.
 
 double_char('The') → 'TThhee'
 double_char('AAbb') → 'AAAAbbbb'
@@ -224,8 +218,8 @@ def cat_dog(str):
     return cat == dog
 
 """
-Given two strings, return True if either of the strings appears at
-very end of the other string, ignoring upper/lower case differences.
+Given two strings, return True if either of the strings appears at very end of the other string,
+ignoring upper/lower case differences.
 
 end_other('Hiabc', 'abc') → True
 end_other('AbC', 'HiaBc') → True
