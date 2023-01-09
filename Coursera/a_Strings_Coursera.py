@@ -195,15 +195,15 @@ cat_dog('catcat') → False
 cat_dog('1cat1cadodog') → True
 """
 
-def cat_dog(str):
-    cat = 0
-    dog = 0
-    for i in range(len(str) - 2):
-        if str[i] == 'c' and str[i + 1] == 'a' and str[i + 2] == 't':
-            cat += 1
-        if str[i] == 'd' and str[i + 1] == 'o' and str[i + 2] == 'g':
-            dog += 1
-    return cat == dog
+def count_cat_dog(str):
+    n_cat = 0
+    n_dog = 0
+    for i in range(len(str)):
+        if str.startswith('cat', i):
+            n_cat += 1
+        if str.startswith('dog', i):
+            n_dog += 1
+    return n_cat == n_dog
 
 """
 Given two strings, return True if either of the strings appears at very end of the other string,
@@ -211,22 +211,12 @@ ignoring upper/lower case differences.
 
 end_other('Hiabc', 'abc') → True
 end_other('AbC', 'HiaBc') → True
-end_other('abc', 'abXabc') → Tru
+end_other('abc', 'abXabc') → True
 """
 
 def end_other(a, b):
-    lower_a = a.lower()
-    lower_b = b.lower()
-
-    if lower_a == lower_b:
-        return True
-
-    if len(a) == len(b) and not lower_a == lower_b:
-        return False
-
     if len(a) < len(b):
-        lower_b = lower_b[len(b) - len(a):]
-    else:
-        lower_a = lower_a[len(a) - len(b):]
-    
-    return lower_a == lower_b
+        b = b[len(b) - len(a):]
+    elif len(b) < len(a):
+        a = a[len(a) - len(b):]
+    return a.lower() == b.lower()

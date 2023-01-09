@@ -30,7 +30,19 @@ if __name__=="__main__":
         a.double_char(str)
 
         str = 'hiABChi hi'
-        print(a.count_hi(str))
+        a.count_hi(str)
+
+        str = '1cat1cadogdorg'
+        a.count_cat_dog(str)
+
+        str = [
+            ['Hiabc', 'abc'],
+            ['AbC', 'HiaBc'],
+            ['abc', 'abXabcd'],
+            ['dabc', 'abcd'],
+        ]
+        for s in str:
+            print(a.end_other(s[0], s[1]))
 
     except Exception as e:
         print(traceback.format_exc())
