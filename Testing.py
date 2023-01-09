@@ -9,13 +9,28 @@ if __name__=="__main__":
 
         str = ['candy', 'x', 'not bad', 'note']
         for s in str:
-            print(a.not_string(s))
+            a.not_string(s)
 
         str = ['Java', 'Chocolate', 'abc']
         for s in str:
-            print(a.front3(s))
+            a.front3(s)
         
+        str = 'Hi'
+        n = 3
+        a.string_times(str, n)
 
+        str = ['Java', 'Chocolate', 'abc']
+        for s in str:
+            a.front_times(s, n)
+
+        str = 'Heeololeo'
+        a.string_bits(str)
+
+        str = 'Hi-There'
+        a.double_char(str)
+
+        str = 'hiABChi hi'
+        print(a.count_hi(str))
 
     except Exception as e:
         print(traceback.format_exc())

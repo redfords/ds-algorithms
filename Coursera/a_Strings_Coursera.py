@@ -5,7 +5,7 @@ string after the colon character and convert the extracted string into a floatin
 
 def convert_to_float(str):
     atpos = str.find(':')
-    print(float(str[atpos+1:]))
+    return float(str[atpos+1:])
 
 """
 Write a program to read through a file and print the contents of the file (line by line) all in upper case.
@@ -128,10 +128,7 @@ string_times('Hi', 3) → 'HiHiHi'
 """
 
 def string_times(str, n):
-    new_str = ''
-    for i in range(n):
-        new_str = new_str + str
-    return new_str
+    return str * n
 
 """
 Given a string and a non-negative int n, we'll say that the front of the string is the first 3 chars,
@@ -143,15 +140,9 @@ front_times('Abc', 3) → 'AbcAbcAbc'
 """
 
 def front_times(str, n):
-    front = ''
-    new_str = ''
-    if len(str) < 3:
-        front = str
-    else:
-        front = str[:3]
-    for i in range(n):
-        new_str = new_str + front
-    return new_str
+    if len(str) > 3:
+        str = str[:3]
+    return str * n
 
 """
 Given a string, return a new string made of every other char starting with the first.
@@ -163,9 +154,8 @@ string_bits('Heeololeo') → 'Hello'
 
 def string_bits(str):
     new_str = ''
-    for i in range(len(str)):
-        if i % 2 == 0:
-            new_str = new_str + str[i]
+    for i in range(0, len(str), 2):
+        new_str = new_str + str[i]
     return new_str
     
 """
@@ -179,7 +169,7 @@ double_char('Hi-There') → 'HHii--TThheerree'
 def double_char(str):
     new_str = ''
     for letter in str:
-        new_str += letter + letter
+        new_str += letter * 2
     return new_str
 
 """
@@ -192,8 +182,8 @@ count_hi('hihi') → 2
 
 def count_hi(str):
     count = 0
-    for i in range(len(str) - 1):
-        if str[i] == 'h' and str[i + 1] == 'i':
+    for i in range(len(str)):
+        if str.startswith('hi', i):
             count += 1
     return count
 
