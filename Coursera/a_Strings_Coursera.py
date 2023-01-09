@@ -39,25 +39,27 @@ X-DSPAM-Confidence: 0.8475
 When you reach the end of the file, print out the average spam confidence.
 """
 
-def print_spam_avg():
-    sum = 0.0
-    count = 0
-    for line in fhand:
-        new_line = line.rstrip()
-        if new_line.startswith('X-DSPAM-Confidence:'):
-            count += 1
-            sum += float(new_line[new_line.find(' ')+1:])
-    print('Average spam confidence', sum / count)
+def get_file_name():
 
-fname = input('Enter a file name: ')
-try:
-    fhand = open(fname)
-except:
-    print('File cannot be opened', fname)
-    quit()
+    def print_spam_avg():
+        sum = 0.0
+        count = 0
+        for line in fhand:
+            new_line = line.rstrip()
+            if new_line.startswith('X-DSPAM-Confidence:'):
+                count += 1
+                sum += float(new_line[new_line.find(' ')+1:])
+        print('Average spam confidence', sum / count)
 
-print_spam_avg()
-fhand.close()
+    fname = input('Enter a file name: ')
+    try:
+        fhand = open(fname)
+    except:
+        print('File cannot be opened', fname)
+        quit()
+
+    print_spam_avg()
+    fhand.close()
 
 """
 Given a string, return a new string where "not " has been added to the front.
@@ -69,7 +71,7 @@ not_string('not bad') → 'not bad'
 """
 
 def not_string(str):
-    if str.startswith('not'):
+    if str.startswith('not '):
         return str
     else:
         return 'not ' + str
@@ -90,20 +92,18 @@ def missing_char(str, n):
 """
 Given a string, return a new string where the first and last chars have been exchanged.
 
-front_back('code') → 'eodc'
-front_back('a') → 'a'
-front_back('ab') → 'ba'
+exchange_first_last('code') → 'eodc'
+exchange_first_last('a') → 'a'
+exchange_first_last('ab') → 'ba'
 """
 
-def front_back(str):
-
+def exchange_first_last(str):
     if len(str) <= 1:
-        return str
-        
+        return str        
     if len(str) == 2:
-        return str[len(str) - 1] + str[0]
+        return str[len(str)-1] + str[0]
     else:
-        return str[len(str) - 1] + str[1:len(str) - 1] + str[0]
+        return str[len(str)-1] + str[1:len(str)-1] + str[0]
 
 """
 Given a string, we'll say that the front is the first 3 chars of the string. If the string length is
@@ -115,11 +115,9 @@ front3('abc') → 'abcabcabc'
 """
 
 def front3(str):
-    if len(str) < 3:
-        return str + str + str
-    else:
-        return str[:3] + str[:3] + str[:3]
-
+    if len(str) > 3:
+        str = str[:3]
+    return str * 3
 
 """
 Given a string and a non-negative int n, return a larger string that is n copies
