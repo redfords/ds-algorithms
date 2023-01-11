@@ -1,4 +1,4 @@
-from Coursera import a_Strings_Coursera as a
+import a_Strings_Coursera as a
 import sys
 import traceback
 
