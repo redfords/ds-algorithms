@@ -5,15 +5,12 @@ add_commas("12345678") returns "12,345,678".
 """
 
 def add_commas(str):
-    str_commas = ''
-    i = -1
-    while i >= -abs(len(str)):
-        str_commas = str_commas + str[i]
+    with_commas = ''
+    for i in range(1, len(str)+1):
+        with_commas = with_commas + str[-i]
         if i % 3 == 0:
-            str_commas = str_commas + ','
-        i -= 1
-
-    return str_commas[: : -1]   
+            with_commas = with_commas + ','
+    return with_commas[::-1]
 
 """
 Caesar Cipher
@@ -43,19 +40,24 @@ def caesar_cipher(message, num):
 Number of overlapping occurrences of substring
 """
 
-string = 'abcdefghghghghghgh.'
-substring = 'ghg'
+def occ_str(str, substr):
+    n_occ = 0
+    len_substr = len(substr)
+    for i in range(len(str) - len_substr):
+        if substr in str[i:i + len_substr]:
+            n_occ += 1
+    return n_occ
 
-count = 0
-start = 0
+# def occ_str(str, substr):
+#     n_occ = 0
+#     start = 0
+#     while True:
+#         start = str.find(substr, start)
+#         if start == -1:
+#             return n_occ
+#         n_occ += 1
+#         start += 1
 
-for i in range(len(string)):
-    i = string.find(substring, start)
-    if i > 0:
-        start = i + 1
-        count += 1
-    else:
-        break
 
 """
 Check if all strings in list are not empty
@@ -63,7 +65,7 @@ Check if all strings in list are not empty
 
 myList = ['a', 'abc', 'bc']
 result = all(myList)
-print(f'Are all strings non-empty? {result}')
+# print(f'Are all strings non-empty? {result}')
 
 """
 FizzBuzz
@@ -80,4 +82,4 @@ def fizzBuzz(n):
         else:
             print(n)
 
-fizzBuzz(15)
+# fizzBuzz(15)
