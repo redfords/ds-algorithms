@@ -7,34 +7,10 @@ add_commas("12345678") returns "12,345,678".
 def add_commas(str):
     with_commas = ''
     for i in range(1, len(str)+1):
-        with_commas = with_commas + str[-i]
+        with_commas += str[-i]
         if i % 3 == 0:
-            with_commas = with_commas + ','
+            with_commas += ','
     return with_commas[::-1]
-
-"""
-Caesar Cipher
-A Caesar cipher is a simple substitution cipher in which each letter of the plain text is
-substituted with a letter found by moving n places down the alphabet. For example, assume
-the input plain text is the following:
-
-abcd xyz
-If the shift value, n, is 4, then the encrypted text would be the following:
-
-efgh bcd
-You are to write a function that accepts two arguments, a plain-text message and a number
-of letters to shift in the cipher. The function will return an encrypted string with all
-letters transformed and all punctuation and whitespace remaining unchanged.
-
-Note: You can assume the plain text is all lowercase ASCII.
-"""
-
-def caesar_cipher(message, num):
-    letters = string.ascii_lowercase
-    mask = letters[num :] + letters[: num]
-    translation_table = str.maketrans(letters, mask)
-
-    return message.translate(translation_table)
 
 """
 Number of overlapping occurrences of substring
