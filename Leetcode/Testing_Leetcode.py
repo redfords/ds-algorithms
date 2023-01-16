@@ -21,7 +21,24 @@ def a_strings():
 
     s = "codeleet"
     indices = [4,5,6,7,0,2,1,3]
-    print(a.restore_string(s, indices))
+    a.restore_string(s, indices)
+
+    s = "K1:L2"
+    a.cells_in_range(s)
+
+    key = "the quick brown fox jumps over the lazy dog"
+    message = "vkbs bs t suepuv"
+    a.decode_message(key, message)
+
+    s = "Myself2 Me1 I4 and3"
+    a.sort_sentence(s)
+
+    sentence = "thequickbrownfoxjumpsoverthelazydog"
+    a.check_if_pangram(sentence)
+
+    word1  = ["a", "cb"]
+    word2 = ["ab", "c"]
+    print(a.array_strings_are_equal(word1, word2))
 
 if __name__=="__main__":
     try:
