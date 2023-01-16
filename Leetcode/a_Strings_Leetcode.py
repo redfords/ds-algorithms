@@ -153,3 +153,132 @@ def restore_string(s, indices):
         restored[i] = s[n]
         n += 1
     return ''.join(restored)
+
+"""
+A cell (r, c) of an excel sheet is represented as a string "<col><row>" where:
+
+<col> denotes the column number c of the cell. It is represented by alphabetical letters.
+<row> is the row number r of the cell. The rth row is represented by the integer r.
+You are given a string s in the format "<col1><row1>:<col2><row2>", where <col1> represents the column c1,
+<row1> represents the row r1, <col2> represents the column c2, and <row2> represents the row r2, such that r1 <= r2 and c1 <= c2.
+
+Return the list of cells (x, y) such that r1 <= x <= r2 and c1 <= y <= c2. The cells should be represented as strings in the
+format mentioned above and be sorted in non-decreasing order first by columns and then by rows.
+
+Example 1:
+Input: s = "K1:L2"
+Output: ["K1","K2","L1","L2"]
+"""
+
+def cells_in_range(s):
+    cells = []
+    c1 = ord(s[0])
+    c2 = ord(s[3])+1
+    r1 = int(s[1])
+    r2 = int(s[4])+1
+    for i in range(c1, c2):
+        for n in range(r1, r2):
+            cells.append(chr(i) + str(n))
+    return cells
+
+"""
+Balanced strings are those that have an equal quantity of 'L' and 'R' characters.
+Given a balanced string s, split it into some number of substrings such that:
+Each substring is balanced.
+Return the maximum number of balanced strings you can obtain.
+
+Example 1:
+Input: s = "RLRRLLRLRL"
+Output: 4
+"""
+
+def balanced_string_split(s):
+    pass
+
+"""
+You are given the strings key and message, which represent a cipher key and a secret message, respectively.
+The steps to decode message are as follows:
+Use the first appearance of all 26 lowercase English letters in key as the order of the substitution table.
+Align the substitution table with the regular English alphabet.
+Each letter in message is then substituted using the table.
+Spaces ' ' are transformed to themselves.
+
+Example 1:
+Input: key = "the quick brown fox jumps over the lazy dog", message = "vkbs bs t suepuv"
+Output: "this is a secret"
+"""
+
+def decode_message(key, message):
+    new_key = ''
+    check = set()
+    for k in key:
+        if k != ' ' and k not in check:
+            new_key += k
+            check.add(k)
+    decoded = ''
+    for m in message:
+        if m != ' ':
+            i = new_key.index(m)
+            decoded += chr(i+97)
+        else:
+            decoded += ' '
+    return decoded
+
+"""
+A sentence is a list of words that are separated by a single space with no leading or trailing spaces.
+Each word consists of lowercase and uppercase English letters.
+
+A sentence can be shuffled by appending the 1-indexed word position to each word then rearranging the words in the sentence.
+
+For example, the sentence "This is a sentence" can be shuffled as "sentence4 a3 is2 This1" or "is2 sentence4 This1 a3".
+Given a shuffled sentence s containing no more than 9 words, reconstruct and return the original sentence.
+
+Example 1:
+Input: s = "is2 sentence4 This1 a3"
+Output: "This is a sentence"
+"""
+
+def sort_sentence(s):
+    sentence = ''
+    words = s.split()
+
+    for i in range(1, len(words)+1):
+        for w in words:
+            if int(w[-1:]) == i:
+                sentence += ' ' + w[:-1]
+    return sentence.strip()
+
+"""
+A pangram is a sentence where every letter of the English alphabet appears at least once.
+
+Given a string sentence containing only lowercase English letters, return true if sentence is a pangram, or false otherwise.
+
+Example 1:
+Input: sentence = "thequickbrownfoxjumpsoverthelazydog"
+Output: true
+"""
+
+def check_if_pangram(sentence):
+    # abc = set()
+    # for n in range(97, 123):
+    #     abc.add(chr(n))
+
+    # for letter in abc:
+    #     if letter not in sentence:
+    #         return False
+    # return True
+
+    s = set(sentence)
+    return len(s) == 26    
+"""
+Given two string arrays word1 and word2, return true if the two arrays represent the same string, and false otherwise.
+
+A string is represented by an array if the array elements concatenated in order forms the string.
+
+Example 1:
+Input: word1 = ["ab", "c"], word2 = ["a", "bc"]
+Output: true
+"""
+
+def array_strings_are_equal(word1, word2):
+    return ''.join(word1) == ''.join(word2)
