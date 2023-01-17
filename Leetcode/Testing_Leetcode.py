@@ -38,7 +38,13 @@ def a_strings():
 
     word1  = ["a", "cb"]
     word2 = ["ab", "c"]
-    print(a.array_strings_are_equal(word1, word2))
+    a.array_strings_are_equal(word1, word2)
+
+    words = ["gin","zen","gig","msg"]
+    a.unique_morse_representations(words)
+
+    s = "(1+(2*3)+((8)/4))+1"
+    print(a.max_depth(s))
 
 if __name__=="__main__":
     try:
