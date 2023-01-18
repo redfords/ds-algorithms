@@ -44,7 +44,11 @@ def a_strings():
     a.unique_morse_representations(words)
 
     s = "(1+(2*3)+((8)/4))+1"
-    print(a.max_depth(s))
+    a.max_depth(s)
+
+    s = "Hello how are you Contestant"
+    k = 4
+    a.truncate_sentence(s, k)
 
 if __name__=="__main__":
     try:
