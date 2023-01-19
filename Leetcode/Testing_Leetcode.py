@@ -50,6 +50,9 @@ def a_strings():
     k = 4
     a.truncate_sentence(s, k)
 
+    s = "l|*e*et|c**o|*de|"
+    print(a.count_asterisks(s))
+
 if __name__=="__main__":
     try:
         a_strings()
