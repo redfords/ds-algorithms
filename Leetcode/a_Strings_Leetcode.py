@@ -374,3 +374,14 @@ Output: 2
 
 def count_asterisks(s):
     return sum([a.count('*') for a in s.split('|')][0::2])
+
+"""
+Given a string s, return the string after replacing every uppercase letter with the same lowercase letter.
+
+Example 1:
+Input: s = "Hello"
+Output: "hello"
+"""
+
+def to_lower_case(s):
+    return ''.join(chr(ord(c) + 32) if 'A' <= c <= 'Z' else c for c in s)
