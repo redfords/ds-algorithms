@@ -51,7 +51,10 @@ def a_strings():
     a.truncate_sentence(s, k)
 
     s = "l|*e*et|c**o|*de|"
-    print(a.count_asterisks(s))
+    a.count_asterisks(s)
+
+    s = "Hello"
+    print(a.to_lower_case(s))
 
 if __name__=="__main__":
     try:
