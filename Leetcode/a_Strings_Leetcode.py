@@ -361,3 +361,16 @@ Input: s = "l|*e*et|c**o|*de|"
 Output: 2
 """
 
+# def count_asterisks(s):
+#     a = 0
+#     bar = 0
+#     for ch in s:       
+#         if ch == '|':
+#             bar += 1
+#         if bar % 2 == 0 and ch == '*':
+#             a += 1
+#     return a
+
+
+def count_asterisks(s):
+    return sum([a.count('*') for a in s.split('|')][0::2])
