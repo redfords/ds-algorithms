@@ -58,7 +58,10 @@ def a_strings():
 
     allowed = "ab"
     words = ["ad","bd","aaab","baa","badab"]
-    print(a.count_consistent_strings(allowed, words))
+    a.count_consistent_strings(allowed, words)
+
+    s = "Let's take LeetCode contest"
+    print(a.reverse_words(s))
 
 if __name__=="__main__":
     try:
