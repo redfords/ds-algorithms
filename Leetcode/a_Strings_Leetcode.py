@@ -419,3 +419,34 @@ Output: "s'teL ekat edoCteeL tsetnoc"
 
 def reverse_words(s):
     return " ".join(word[::-1] for word in s.split())
+
+"""
+There are n rings and each ring is either red, green, or blue. The rings are distributed across ten rods labeled from 0 to 9.
+
+You are given a string rings of length 2n that describes the n rings that are placed onto the rods.
+Every two characters in rings forms a color-position pair that is used to describe each ring where:
+
+The first character of the ith pair denotes the ith ring's color ('R', 'G', 'B').
+The second character of the ith pair denotes the rod that the ith ring is placed on ('0' to '9').
+For example, "R3G2B1" describes n == 3 rings: a red ring placed onto the rod labeled 3, a green ring placed onto the rod labeled 2,
+and a blue ring placed onto the rod labeled 1.
+
+Return the number of rods that have all three colors of rings on them.
+
+Example 1:
+Input: rings = "B0B6G0R6R0R6G9"
+Output: 1
+"""
+
+def count_points(rings):
+
+    colors = {rings[n-1] + rings[n] for n in range(1, len(rings), 2)}
+    
+    # rods = "".join(c[1] for c in colors)
+    # unique_rods = {r for r in rods}
+    # return  sum(1 for r in unique_rods if rods.count(r) == 3)
+    
+    counts = dict()
+    for c in colors:
+        counts[c[1]] = counts.get(c[1], 0) + 1
+    return sum(1 for k, v in counts.items() if v == 3)
