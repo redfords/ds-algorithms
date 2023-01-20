@@ -439,14 +439,6 @@ Output: 1
 """
 
 def count_points(rings):
-
-    colors = {rings[n-1] + rings[n] for n in range(1, len(rings), 2)}
-    
-    # rods = "".join(c[1] for c in colors)
-    # unique_rods = {r for r in rods}
-    # return  sum(1 for r in unique_rods if rods.count(r) == 3)
-    
-    counts = dict()
-    for c in colors:
-        counts[c[1]] = counts.get(c[1], 0) + 1
-    return sum(1 for k, v in counts.items() if v == 3)
+    rods = {rings[i] for i in range(1, len(rings), 2)}
+    return sum(all(color + rod in rings for color in 'RGB')
+        for rod in rods)
