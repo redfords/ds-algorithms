@@ -61,7 +61,10 @@ def a_strings():
     a.count_consistent_strings(allowed, words)
 
     s = "Let's take LeetCode contest"
-    print(a.reverse_words(s))
+    a.reverse_words(s)
+
+    rings = "B0B6G0R6R0R6G9"
+    print(a.count_points(rings))
 
 if __name__=="__main__":
     try:
