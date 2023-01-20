@@ -385,3 +385,26 @@ Output: "hello"
 
 def to_lower_case(s):
     return ''.join(chr(ord(c) + 32) if 'A' <= c <= 'Z' else c for c in s)
+
+"""
+You are given a string allowed consisting of distinct characters and an array of strings words.
+A string is consistent if all characters in the string appear in the string allowed.
+
+Return the number of consistent strings in the array words.
+
+Example 1:
+Input: allowed = "ab", words = ["ad","bd","aaab","baa","badab"]
+Output: 2
+"""
+
+def count_consistent_strings(allowed, words):
+    cons = 0
+    for word in words:
+        is_cons = True
+        for ch in word:
+            if ch not in allowed:
+                is_cons = False
+                break
+        if is_cons:
+            cons += 1
+    return cons
