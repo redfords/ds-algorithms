@@ -54,7 +54,11 @@ def a_strings():
     a.count_asterisks(s)
 
     s = "Hello"
-    print(a.to_lower_case(s))
+    a.to_lower_case(s)
+
+    allowed = "ab"
+    words = ["ad","bd","aaab","baa","badab"]
+    print(a.count_consistent_strings(allowed, words))
 
 if __name__=="__main__":
     try:
