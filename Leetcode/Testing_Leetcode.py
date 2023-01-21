@@ -71,7 +71,11 @@ def a_strings():
     a.sort_people(names, heights)
 
     s = "(()())(())"
-    print(a.remove_outer_parentheses(s))
+    a.remove_outer_parentheses(s)
+
+    patterns = ["a","abc","bc","d"]
+    word = "abc"
+    print(a.num_of_strings(patterns, word))
 
 if __name__=="__main__":
     try:
