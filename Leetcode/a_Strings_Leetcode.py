@@ -442,3 +442,19 @@ def count_points(rings):
     rods = {rings[i] for i in range(1, len(rings), 2)}
     return sum(all(color + rod in rings for color in 'RGB')
         for rod in rods)
+
+"""
+You are given an array of strings names, and an array heights that consists of distinct positive integers. Both arrays are of length n.
+For each index i, names[i] and heights[i] denote the name and height of the ith person.
+Return names sorted in descending order by the people's heights.
+
+Example 1:
+Input: names = ["Mary","John","Emma"], heights = [180,165,170]
+Output: ["Mary","Emma","John"]
+"""
+
+def sort_people(names, heights):
+    # sorted_heights = sorted(heights,reverse=True)
+    # return [names[heights.index(i)] for i in sorted_heights]    
+
+    return [b for a, b in sorted(zip(heights, names), reverse=True)]
