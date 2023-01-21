@@ -458,3 +458,29 @@ def sort_people(names, heights):
     # return [names[heights.index(i)] for i in sorted_heights]    
 
     return [b for a, b in sorted(zip(heights, names), reverse=True)]
+
+"""
+Return s after removing the outermost parentheses of every primitive string in the primitive decomposition of s.
+
+Example 1:
+Input: s = "(()())(())"
+Output: "()()()"
+"""
+
+def remove_outer_parentheses(s):
+    res = ''
+    count = 0
+    for i in range(len(s)):
+        if s[i] == '(' and count == 0:
+            count += 1
+        elif s[i] == '(' and count >= 1:
+            res += s[i]
+            count += 1
+        elif s[i] == ')' and count > 1:
+            res += s[i]
+            count -= 1
+        elif s[i] == ')' and count == 1:
+            count -= 1
+    return res
+        
+
