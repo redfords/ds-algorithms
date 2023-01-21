@@ -64,7 +64,11 @@ def a_strings():
     a.reverse_words(s)
 
     rings = "B0B6G0R6R0R6G9"
-    print(a.count_points(rings))
+    a.count_points(rings)
+
+    names = ["Mary","John","Emma"]
+    heights = [180,165,170]
+    print(a.sort_people(names, heights))
 
 if __name__=="__main__":
     try:
