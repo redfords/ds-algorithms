@@ -75,7 +75,10 @@ def a_strings():
 
     patterns = ["a","abc","bc","d"]
     word = "abc"
-    print(a.num_of_strings(patterns, word))
+    a.num_of_strings(patterns, word)
+
+    s = "a1c1e1"
+    print(a.replace_digits(s))
 
 if __name__=="__main__":
     try:
