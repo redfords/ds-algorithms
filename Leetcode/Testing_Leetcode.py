@@ -68,7 +68,10 @@ def a_strings():
 
     names = ["Mary","John","Emma"]
     heights = [180,165,170]
-    print(a.sort_people(names, heights))
+    a.sort_people(names, heights)
+
+    s = "(()())(())"
+    print(a.remove_outer_parentheses(s))
 
 if __name__=="__main__":
     try:
