@@ -7,14 +7,8 @@ English letters 'a' through 'j' inclusive.
 Return true if the summation of the numerical values of firstWord and secondWord equals the
 numerical value of targetWord, or false otherwise.
 
-Example 1:
 Input: firstWord = "acb", secondWord = "cba", targetWord = "cdb"
 Output: true
-Explanation:
-The numerical value of firstWord is "acb" -> "021" -> 21.
-The numerical value of secondWord is "cba" -> "210" -> 210.
-The numerical value of targetWord is "cdb" -> "231" -> 231.
-We return true because 21 + 210 == 231.
 """
 
 def isSumEqual(firstWord, secondWord, targetWord):
@@ -29,13 +23,8 @@ Given a valid (IPv4) IP address, return a defanged version of that IP address.
 
 A defanged IP address replaces every period "." with "[.]".
 
-Example 1:
 Input: address = "1.1.1.1" -> 
 Output: "1[.]1[.]1[.]1"
-
-Example 2:
-Input: address = "255.100.50.0"
-Output: "255[.]100[.]50[.]0"
 """
 
 def defang_ip_addr(str):
@@ -53,12 +42,6 @@ Given an array of strings operations containing a list of operations, return the
 
 Input: operations = ["--X","X++","X++"]
 Output: 1
-
-Input: operations = ["++X","++X","X++"]
-Output: 3
-
-Input: operations = ["X++","++X","--X","X--"]
-Output: 0
 """
 
 def final_value_after_operations(operations):
@@ -77,14 +60,8 @@ You want to know how many of the stones you have are also jewels.
 
 Letters are case sensitive, so "a" is considered a different type of stone from "A". 
 
-Example 1:
-
 Input: jewels = "aA", stones = "aAAbbbb"
 Output: 3
-
-Example 2:
-Input: jewels = "z", stones = "ZZ"
-Output: 0
 """
 
 def num_jewels_in_stones(jewels, stones):
@@ -97,13 +74,8 @@ You are given an array of strings sentences, where each sentences[i] represents 
 
 Return the maximum number of words that appear in a single sentence.
 
-Example 1:
 Input: sentences = ["alice and bob love leetcode", "i think so too", "this is great thanks very much"]
 Output: 6
-
-Example 2:
-Input: sentences = ["please wait", "continue to fight", "continue to win"]
-Output: 3
 """
 
 def most_words_found(sentences):
@@ -117,17 +89,8 @@ and "(al)" as the string "al". The interpreted strings are then concatenated in 
 
 Given the string command, return the Goal Parser's interpretation of command.
 
-Example 1:
 Input: command = "G()(al)"
 Output: "Goal"
-
-Example 2:
-Input: command = "G()()()()(al)"
-Output: "Gooooal"
-
-Example 3:
-Input: command = "(al)G(al)()()G"
-Output: "alGalooG"
 """
 
 def interpret(command):
@@ -141,7 +104,6 @@ that the character at the ith position moves to indices[i] in the shuffled strin
 
 Return the shuffled string.
 
-Example 1:
 Input: s = "codeleet", indices = [4,5,6,7,0,2,1,3]
 Output: "leetcode"
 """
@@ -165,7 +127,6 @@ You are given a string s in the format "<col1><row1>:<col2><row2>", where <col1>
 Return the list of cells (x, y) such that r1 <= x <= r2 and c1 <= y <= c2. The cells should be represented as strings in the
 format mentioned above and be sorted in non-decreasing order first by columns and then by rows.
 
-Example 1:
 Input: s = "K1:L2"
 Output: ["K1","K2","L1","L2"]
 """
@@ -187,7 +148,6 @@ Given a balanced string s, split it into some number of substrings such that:
 Each substring is balanced.
 Return the maximum number of balanced strings you can obtain.
 
-Example 1:
 Input: s = "RLRRLLRLRL"
 Output: 4
 """
@@ -203,7 +163,6 @@ Align the substitution table with the regular English alphabet.
 Each letter in message is then substituted using the table.
 Spaces ' ' are transformed to themselves.
 
-Example 1:
 Input: key = "the quick brown fox jumps over the lazy dog", message = "vkbs bs t suepuv"
 Output: "this is a secret"
 """
@@ -233,7 +192,6 @@ A sentence can be shuffled by appending the 1-indexed word position to each word
 For example, the sentence "This is a sentence" can be shuffled as "sentence4 a3 is2 This1" or "is2 sentence4 This1 a3".
 Given a shuffled sentence s containing no more than 9 words, reconstruct and return the original sentence.
 
-Example 1:
 Input: s = "is2 sentence4 This1 a3"
 Output: "This is a sentence"
 """
@@ -253,7 +211,6 @@ A pangram is a sentence where every letter of the English alphabet appears at le
 
 Given a string sentence containing only lowercase English letters, return true if sentence is a pangram, or false otherwise.
 
-Example 1:
 Input: sentence = "thequickbrownfoxjumpsoverthelazydog"
 Output: true
 """
@@ -275,7 +232,6 @@ Given two string arrays word1 and word2, return true if the two arrays represent
 
 A string is represented by an array if the array elements concatenated in order forms the string.
 
-Example 1:
 Input: word1 = ["ab", "c"], word2 = ["a", "bc"]
 Output: true
 """
@@ -295,7 +251,6 @@ For example, "cab" can be written as "-.-..--...", which is the concatenation of
 We will call such a concatenation the transformation of a word.
 Return the number of different transformations among all words we have.
 
-Example 1:
 Input: words = ["gin","zen","gig","msg"]
 Output: 2
 """
@@ -311,13 +266,7 @@ def unique_morse_representations(words):
 """
 Given a VPS represented as string s, return the nesting depth of s.
 
-Example 1:
-
 Input: s = "(1+(2*3)+((8)/4))+1"
-Output: 3
-
-Example 2:
-Input: s = "(1)+((2))+(((3)))"
 Output: 3
 """
 
@@ -339,7 +288,6 @@ Each of the words consists of only uppercase and lowercase English letters (no p
 For example, "Hello World", "HELLO", and "hello world hello world" are all sentences.
 You are given a sentence s and an integer k. You want to truncate s such that it contains only the first k words. Return s after truncating it.
 
-Example 1:
 Input: s = "Hello how are you Contestant", k = 4
 Output: "Hello how are you"
 """
@@ -354,9 +302,6 @@ In other words, the 1st and 2nd '|' make a pair, the 3rd and 4th '|' make a pair
 
 Return the number of '*' in s, excluding the '*' between each pair of '|'.
 
-Note that each '|' will belong to exactly one pair.
-
-Example 1:
 Input: s = "l|*e*et|c**o|*de|"
 Output: 2
 """
@@ -378,7 +323,6 @@ def count_asterisks(s):
 """
 Given a string s, return the string after replacing every uppercase letter with the same lowercase letter.
 
-Example 1:
 Input: s = "Hello"
 Output: "hello"
 """
@@ -392,7 +336,6 @@ A string is consistent if all characters in the string appear in the string allo
 
 Return the number of consistent strings in the array words.
 
-Example 1:
 Input: allowed = "ab", words = ["ad","bd","aaab","baa","badab"]
 Output: 2
 """
@@ -412,7 +355,6 @@ def count_consistent_strings(allowed, words):
 """
 Given a string s, reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order.
 
-Example 1:
 Input: s = "Let's take LeetCode contest"
 Output: "s'teL ekat edoCteeL tsetnoc"
 """
@@ -428,12 +370,9 @@ Every two characters in rings forms a color-position pair that is used to descri
 
 The first character of the ith pair denotes the ith ring's color ('R', 'G', 'B').
 The second character of the ith pair denotes the rod that the ith ring is placed on ('0' to '9').
-For example, "R3G2B1" describes n == 3 rings: a red ring placed onto the rod labeled 3, a green ring placed onto the rod labeled 2,
-and a blue ring placed onto the rod labeled 1.
 
 Return the number of rods that have all three colors of rings on them.
 
-Example 1:
 Input: rings = "B0B6G0R6R0R6G9"
 Output: 1
 """
@@ -448,7 +387,6 @@ You are given an array of strings names, and an array heights that consists of d
 For each index i, names[i] and heights[i] denote the name and height of the ith person.
 Return names sorted in descending order by the people's heights.
 
-Example 1:
 Input: names = ["Mary","John","Emma"], heights = [180,165,170]
 Output: ["Mary","Emma","John"]
 """
@@ -462,7 +400,6 @@ def sort_people(names, heights):
 """
 Return s after removing the outermost parentheses of every primitive string in the primitive decomposition of s.
 
-Example 1:
 Input: s = "(()())(())"
 Output: "()()()"
 """
@@ -488,7 +425,6 @@ Given an array of strings patterns and a string word, return the number of strin
 
 A substring is a contiguous sequence of characters within a string.
 
-Example 1:
 Input: patterns = ["a","abc","bc","d"], word = "abc"
 Output: 3
 """
@@ -506,7 +442,6 @@ For every odd index i, you want to replace the digit s[i] with shift(s[i-1], s[i
 
 Return s after replacing all digits. It is guaranteed that shift(s[i-1], s[i]) will never exceed 'z'.
 
-Example 1:
 Input: s = "a1c1e1"
 Output: "abcdef"
 """
@@ -524,13 +459,8 @@ Characters ('a' to 'i') are represented by ('1' to '9') respectively.
 Characters ('j' to 'z') are represented by ('10#' to '26#') respectively.
 Return the string formed after mapping.
 
-Example 1:
 Input: s = "10#11#12"
 Output: "jkab"
-
-Example 2:
-Input: s = "1326#"
-Output: "acz"
 """
 
 # def freq_alphabets(s):
@@ -555,7 +485,6 @@ Given an array of strings words, return the first palindromic string in the arra
 
 A string is palindromic if it reads the same forward and backward.
 
-Example 1:
 Input: words = ["abc","car","ada","racecar","cool"]
 Output: "ada"
 """
