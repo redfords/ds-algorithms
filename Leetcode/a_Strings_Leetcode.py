@@ -547,7 +547,23 @@ Output: "acz"
 
 def freq_alphabets(s):
     for i in range(26, 0, -1):
-        s = s.replace(str(i)+'#'*(i>9),chr(96+i))
-        print(i)
+        s = s.replace(str(i) + '#' * (i > 9), chr(96 + i))
     return s
         
+"""
+Given an array of strings words, return the first palindromic string in the array. If there is no such string, return an empty string "".
+
+A string is palindromic if it reads the same forward and backward.
+
+Example 1:
+Input: words = ["abc","car","ada","racecar","cool"]
+Output: "ada"
+"""
+
+def first_palindrome(words):
+    for word in words:
+        if word == word[::-1]:
+            return word
+    return ""
+
+    # return next((word for word in words if word == word[::-1]), "")
