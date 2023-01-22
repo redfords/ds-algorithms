@@ -86,7 +86,11 @@ def a_strings():
     a.freq_alphabets(s)
 
     words = ["abc","car","ada","racecar","cool"]
-    print(a.first_palindrome(words))
+    a.first_palindrome(words)
+
+    word = "abcdefd"
+    ch = "d"
+    print(a.reverse_prefix(word, ch))
 
 if __name__=="__main__":
     try:
