@@ -83,7 +83,10 @@ def a_strings():
     s = "10#11#12"
     s = "1326#"
     
-    print(a.freq_alphabets(s))
+    a.freq_alphabets(s)
+
+    words = ["abc","car","ada","racecar","cool"]
+    print(a.first_palindrome(words))
 
 if __name__=="__main__":
     try:
