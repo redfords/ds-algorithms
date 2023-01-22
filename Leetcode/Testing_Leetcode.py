@@ -78,7 +78,12 @@ def a_strings():
     a.num_of_strings(patterns, word)
 
     s = "a1c1e1"
-    print(a.replace_digits(s))
+    a.replace_digits(s)
+
+    s = "10#11#12"
+    s = "1326#"
+    
+    print(a.freq_alphabets(s))
 
 if __name__=="__main__":
     try:

@@ -516,3 +516,36 @@ def replace_digits(s):
     for i in range(1, len(res), 2):
         res[i] = chr(ord(res[i-1]) + int(res[i]))
     return "".join(res)
+
+"""
+You are given a string s formed by digits and '#'. We want to map s to English lowercase characters as follows:
+
+Characters ('a' to 'i') are represented by ('1' to '9') respectively.
+Characters ('j' to 'z') are represented by ('10#' to '26#') respectively.
+Return the string formed after mapping.
+
+Example 1:
+Input: s = "10#11#12"
+Output: "jkab"
+
+Example 2:
+Input: s = "1326#"
+Output: "acz"
+"""
+
+def freq_alphabets(s):
+    res = list()
+    i = 0
+    while i < len(s):
+        if i + 2 < len(s) and s[i + 2] == '#':
+            res.append(chr(int(s[i:i+2]) + 96))
+            i += 3
+        else:
+            res.append(chr(int(s[i]) + 96))
+            i += 1
+    return "".join(res)
+
+def freqAlphabets(self, s: str) -> str:
+    for i in range(26,0,-1): s = s.replace(str(i)+'#'*(i>9),chr(96+i))
+    return s
+        
