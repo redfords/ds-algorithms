@@ -90,7 +90,13 @@ def a_strings():
 
     word = "abcdefd"
     ch = "d"
-    print(a.reverse_prefix(word, ch))
+    a.reverse_prefix(word, ch)
+
+    s = "book"
+    a.halves_are_alike(s)
+
+    n = 4
+    print(a.generate_the_string(n))
 
 if __name__=="__main__":
     try:

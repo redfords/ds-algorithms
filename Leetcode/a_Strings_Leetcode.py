@@ -514,3 +514,35 @@ def reverse_prefix(word, ch):
         return word[i::-1] + word[i+1:]
     except:
         return word
+
+"""
+You are given a string s of even length. Split this string into two halves of equal lengths, and let a be the first half and b be the second half.
+Two strings are alike if they have the same number of vowels ('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U').
+Notice that s contains uppercase and lowercase letters. Return true if a and b are alike. Otherwise, return false.
+
+Input: s = "book"
+Output: true
+"""
+
+def halves_are_alike(s):
+    a = 0
+    b = 0
+    length = len(s)
+    for i in range(length):
+        if s[i] in 'aeiouAEIOU':
+            if i < length / 2:
+                a += 1
+            else:
+                b += 1
+    return a == b
+
+"""
+Given an integer n, return a string with n characters such that each character in such string occurs an odd number of times.
+The returned string must contain only lowercase English letters. If there are multiples valid strings, return any of them.  
+
+Input: n = 4
+Output: "pppz"
+"""
+
+def generate_the_string(n):
+    return 'a' * (n - 1) + 'b' if n % 2 == 0 else 'a' * n
