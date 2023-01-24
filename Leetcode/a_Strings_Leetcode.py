@@ -557,4 +557,11 @@ Output: "Sao Paulo"
 """
 
 def dest_city(paths):
-    pass
+    destination = set(p[1] for p in paths)
+    source = set(p[0] for p in paths)
+    for d in destination:
+        if d not in source:
+            return d
+    
+    # A, B = map(set, zip(*paths))
+    #     return (B - A).pop()
