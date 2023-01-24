@@ -96,7 +96,10 @@ def a_strings():
     a.halves_are_alike(s)
 
     n = 4
-    print(a.generate_the_string(n))
+    a.generate_the_string(n)
+
+    paths = [["London","New York"],["New York","Lima"],["Lima","Sao Paulo"]]
+    print(a.dest_city(paths))
 
 if __name__=="__main__":
     try:
