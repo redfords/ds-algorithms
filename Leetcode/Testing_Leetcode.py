@@ -100,17 +100,20 @@ def a_strings():
     a.generate_the_string(n)
 
     paths = [["London","New York"],["New York","Lima"],["Lima","Sao Paulo"]]
-    print(a.dest_city(paths))
+    a.dest_city(paths)
 
-def a_arrays():
+def b_arrays():
     nums = [0,2,1,5,3,4]
     b.build_array(nums)
 
-    
+    nums = [1,2,1]
+    b.get_concatenation(nums)
+
 
 if __name__=="__main__":
     try:
         a_strings()
+        b_arrays()
 
     except Exception as e:
         print(traceback.format_exc())
