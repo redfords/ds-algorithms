@@ -1,4 +1,5 @@
 import a_Strings_Leetcode as a
+import b_Arrays_Leetcode as b
 import sys
 import traceback
 
@@ -100,6 +101,12 @@ def a_strings():
 
     paths = [["London","New York"],["New York","Lima"],["Lima","Sao Paulo"]]
     print(a.dest_city(paths))
+
+def a_arrays():
+    nums = [0,2,1,5,3,4]
+    b.build_array(nums)
+
+    
 
 if __name__=="__main__":
     try:
