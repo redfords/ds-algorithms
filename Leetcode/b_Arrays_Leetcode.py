@@ -8,7 +8,7 @@ Output: [0,1,2,4,5,3]
 """
 
 def build_array(nums):
-    pass
+    return [nums[i] for i in nums]
 
 """
 Given an integer array nums of length n, you want to create an array ans of length 2n where ans[i] == nums[i] and
