@@ -109,6 +109,10 @@ def b_arrays():
     nums = [1,2,1]
     b.get_concatenation(nums)
 
+    nums = [1,15,6,3]
+    print(b.difference_of_sum(nums))
+
+
 
 if __name__=="__main__":
     try:

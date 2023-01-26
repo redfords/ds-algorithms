@@ -23,3 +23,17 @@ Output: [1,2,1,1,2,1]
 
 def get_concatenation(nums):
     return nums * 2
+
+"""
+You are given a positive integer array nums. The element sum is the sum of all the elements in nums.
+The digit sum is the sum of all the digits (not necessarily distinct) that appear in nums.
+Return the absolute difference between the element sum and digit sum of nums.
+
+Input: nums = [1,15,6,3]
+Output: 9
+"""
+
+def difference_of_sum(nums):
+    s = sum(nums)
+    d = sum(int(d) for num in nums for d in str(num))
+    return abs(s - d)
