@@ -6,6 +6,10 @@ import traceback
 def json_actions():
     response = requests.get("https://jsonplaceholder.typicode.com/todos")
     todos = json.loads(response.text)
+    todos_format = json.dumps(todos, indent=4)
+
+    # json.loads takes in a string and returns a json object
+    # json.dumps takes in a json object and returns a string
 
     """
     {
@@ -50,8 +54,7 @@ def json_actions():
 
 if __name__=="__main__":
     try:
-        a_strings()
-        b_arrays()
+        json_actions()
 
     except Exception as e:
         print(traceback.format_exc())
