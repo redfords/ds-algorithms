@@ -1,47 +1,61 @@
 import json
 import requests
+import sys
+import traceback
 
-response = requests.get("https://jsonplaceholder.typicode.com/todos")
-todos = json.loads(response.text)
+def json_actions():
+    response = requests.get("https://jsonplaceholder.typicode.com/todos")
+    todos = json.loads(response.text)
 
-"""
-{
-    "userId": 1,
-    "id": 1,
-    "title": "delectus aut autem",
-    "completed": false
-}
-"""
+    """
+    {
+        "userId": 1,
+        "id": 1,
+        "title": "delectus aut autem",
+        "completed": false
+    }
+    """
+    # Map of userId to number of complete TODOs for that user
+    todos_by_user = {}
 
-# Map of userId to number of complete TODOs for that user
-todos_by_user = {}
+    # Increment complete TODOs count for each user.
+    for todo in todos:
+        if todo["completed"]:
+            try:
+                # Increment the existing user's count.
+                todos_by_user[todo["userId"]] += 1
+            except KeyError:
+                # This user has not been seen. Set their count to 1.
+                todos_by_user[todo["userId"]] = 1
 
-# Increment complete TODOs count for each user.
-for todo in todos:
-    if todo["completed"]:
-        try:
-            # Increment the existing user's count.
-            todos_by_user[todo["userId"]] += 1
-        except KeyError:
-            # This user has not been seen. Set their count to 1.
-            todos_by_user[todo["userId"]] = 1
+    # Create a sorted list of (userId, num_complete) pairs.
+    top_users = sorted(todos_by_user.items(), 
+                    key=lambda x: x[1], reverse=True)
 
-# Create a sorted list of (userId, num_complete) pairs.
-top_users = sorted(todos_by_user.items(), 
-                   key=lambda x: x[1], reverse=True)
+    # Get the maximum number of complete TODOs.
+    max_complete = top_users[0][1]
 
-# Get the maximum number of complete TODOs.
-max_complete = top_users[0][1]
+    # Create a list of all users who have completed
+    # the maximum number of TODOs.
+    users = []
+    for user, num_complete in top_users:
+        if num_complete < max_complete:
+            break
+        users.append(str(user))
 
-# Create a list of all users who have completed
-# the maximum number of TODOs.
-users = []
-for user, num_complete in top_users:
-    if num_complete < max_complete:
-        break
-    users.append(str(user))
+    max_users = " and ".join(users)
 
-max_users = " and ".join(users)
+
+
+
+if __name__=="__main__":
+    try:
+        a_strings()
+        b_arrays()
+
+    except Exception as e:
+        print(traceback.format_exc())
+        sys.exit()
 
 
 """ 
