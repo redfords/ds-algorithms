@@ -7,7 +7,8 @@ def json_actions():
     response = requests.get("https://jsonplaceholder.typicode.com/todos")
     todos = json.loads(response.text)
     todos_format = json.dumps(todos, indent=4)
-
+    print(todos_format)
+    
     # json.loads takes in a string and returns a json object
     # json.dumps takes in a json object and returns a string
 
@@ -31,13 +32,16 @@ def json_actions():
             except KeyError:
                 # This user has not been seen. Set their count to 1.
                 todos_by_user[todo["userId"]] = 1
+    print(todos_by_user)
 
     # Create a sorted list of (userId, num_complete) pairs.
     top_users = sorted(todos_by_user.items(), 
                     key=lambda x: x[1], reverse=True)
+    print(top_users)
 
     # Get the maximum number of complete TODOs.
     max_complete = top_users[0][1]
+    print(max_complete)
 
     # Create a list of all users who have completed
     # the maximum number of TODOs.
@@ -48,6 +52,7 @@ def json_actions():
         users.append(str(user))
 
     max_users = " and ".join(users)
+    print(max_users)
 
 
 
