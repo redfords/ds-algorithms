@@ -1,12 +1,12 @@
 import json
+import requests
 import traceback
 import sys
 
 def encode():
 
     """
-    json encoder and decoder
-    https://docs.python.org/3/library/json.html#basic-usage
+    json encoder and decoder: https://docs.python.org/3/library/json.html#basic-usage
     """
 
     data = {
@@ -42,9 +42,18 @@ def encode():
     data = json.loads(json_string)
     print(data)
 
+def test():
+
+    """
+    json fake data for practice purposes: https://jsonplaceholder.typicode.com/
+    """
+    response = requests.get("https://jsonplaceholder.typicode.com/todos")
+    todos = json.loads(response.text)
+
 if __name__=="__main__":
     try:
         encode()
+        test()
 
     except Exception as e:
         print(traceback.format_exc())
