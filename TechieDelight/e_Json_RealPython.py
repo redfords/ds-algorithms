@@ -2,13 +2,19 @@ import json
 import traceback
 import sys
 
-def test():
+def encode():
+
+    """
+    json encoder and decoder
+    https://docs.python.org/3/library/json.html#basic-usage
+    """
+
     data = {
-    "president": {
-        "name": "Zaphod Beeblebrox",
-        "species": "Betelgeusian"
+        "president": {
+            "name": "Zaphod Beeblebrox",
+            "species": "Betelgeusian"
+        }
     }
-}
 
     with open("data_file.json", "w") as write_file:
         json.dump(data, write_file)
@@ -38,7 +44,7 @@ def test():
 
 if __name__=="__main__":
     try:
-        test()
+        encode()
 
     except Exception as e:
         print(traceback.format_exc())
