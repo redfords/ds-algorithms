@@ -110,7 +110,10 @@ def b_arrays():
     b.get_concatenation(nums)
 
     nums = [1,15,6,3]
-    print(b.difference_of_sum(nums))
+    b.difference_of_sum(nums)
+
+    nums = [10,4,8,3]
+    print(b.left_rigth_difference)
 
 
 

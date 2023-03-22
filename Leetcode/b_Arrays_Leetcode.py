@@ -54,3 +54,5 @@ Input: nums = [10,4,8,3]
 Output: [15,1,11,22]
 """
 
+def left_rigth_difference(nums):
+    pass
