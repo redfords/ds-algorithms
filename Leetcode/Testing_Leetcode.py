@@ -113,7 +113,7 @@ def b_arrays():
     b.difference_of_sum(nums)
 
     nums = [10,4,8,3]
-    print(b.left_rigth_difference)
+    print(b.left_rigth_difference(nums))
 
 
 

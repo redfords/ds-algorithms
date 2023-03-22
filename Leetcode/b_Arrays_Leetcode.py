@@ -55,4 +55,13 @@ Output: [15,1,11,22]
 """
 
 def left_rigth_difference(nums):
-    pass
+    left_sum = [0]
+    right_sum = [0]
+
+    for num in nums[:-1]:
+        left_sum.append(left_sum[-1] + num)
+
+    for num in nums[::-1][:-1]:
+        right_sum.insert(0, right_sum[0] + num)
+
+    return [abs(left_sum[i] - right_sum[i]) for i in range(len(nums))]
