@@ -99,9 +99,12 @@ Output: [[9,9],[8,6]]
 """
 
 def largest_local(grid):
-    for i in range(len(grid) - 2):
-        print(i)
-        for j in range(len(grid[0]) - 3):
-            print(j)
-            print(grid[i][j])
+    pass
     
+    # matrix = list()
+    # for i in range(len(grid)):
+    #     row = list()
+    #     for j in range(len(grid)):     
+    #         row.append(grid[i][j])
+    #     matrix.append(row)
+    # print(matrix)
