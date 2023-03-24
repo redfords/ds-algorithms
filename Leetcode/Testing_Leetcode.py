@@ -113,8 +113,11 @@ def b_arrays():
     b.difference_of_sum(nums)
 
     nums = [10,4,8,3]
-    print(b.left_rigth_difference(nums))
+    b.left_rigth_difference(nums)
 
+    nums = [1,2]
+    k = 1
+    b.count_k_difference(nums, k)
 
 
 if __name__=="__main__":

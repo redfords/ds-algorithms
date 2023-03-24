@@ -55,13 +55,30 @@ Output: [15,1,11,22]
 """
 
 def left_rigth_difference(nums):
-    left_sum = [0]
-    right_sum = [0]
+    left = [0]
+    right = [0]
 
     for num in nums[:-1]:
-        left_sum.append(left_sum[-1] + num)
+        left.append(left[-1] + num)
 
     for num in nums[::-1][:-1]:
-        right_sum.insert(0, right_sum[0] + num)
+        right.insert(0, right[0] + num)
 
-    return [abs(left_sum[i] - right_sum[i]) for i in range(len(nums))]
+    return [abs(left[i] - right[i]) for i in range(len(nums))]
+
+"""
+Given an integer array nums and an integer k, return the number of pairs (i, j) where i < j such that |nums[i] - nums[j]| == k.
+
+Input: nums = [1,2,2,1], k = 1
+Output: 4
+"""
+
+def count_k_difference(nums, k):
+    count = 0
+    for i in range(len(nums)-1):
+        n = nums[i]
+        for x in nums[i+1:]:
+            if abs(n - x) == k:
+                count += 1
+    return count
+    
