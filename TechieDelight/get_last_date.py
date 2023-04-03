@@ -14,18 +14,11 @@ def _setSparkSession(entidad,fechaextract):
 
     return spark
 
-def _get_table_max_process_date(table_location):
-        
-        cmd = "hdfs dfs -ls %s" % (table_location)
-        files = subprocess.check_output(cmd, shell=True).strip().split('\n')
-        for path in files:
-            print(path)
-        #path_table = 'hdfs://' + outdat + '/spin_off/spin_off_reborn_{}_{}'.format(entity, fecha_extract)
-        #parseo.coalesce(1).write.option("sep", "|").format("com.databricks.spark.csv").option("header", "false").option(
-        #            "ignoreLeadingWhiteSpace", "false").option("ignoreTrailingWhiteSpace", "false").mode("append").save(path_spin_off)
-
-        #print("El spinoff de fecha: {} y entidad: {} se genero correctamente".format(fecha_extract, entity))
-        return ""
+def _get_table_max_process_date(location):
+    cmd = "hdfs dfs -ls %s" % (location)
+    files = subprocess.check_output(cmd, shell=True).strip().split('\n')
+    dates = [path[-8:] for path in files[1:]]
+    return max(dates)
 
 def _get_table(tables, server):
     for table in tables[1:]:
