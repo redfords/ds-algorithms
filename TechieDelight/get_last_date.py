@@ -27,13 +27,17 @@ def _get_table_max_process_date(table_location):
         #print("El spinoff de fecha: {} y entidad: {} se genero correctamente".format(fecha_extract, entity))
         return ""
 
+def _get_table(tables, server):
+     pass
+
 #Execution
 if __name__=="__main__":
    try:
        #Recibe por parametro la location de la tabla y su alias
-       table_loc=sys.argv[1]
-       table_alias=sys.argv[2]
-       print("Tabla: "+table_alias+", Max fecha_proceso: "+_get_table_max_process_date(table_loc))
+        server=sys.argv[1]
+        tables=sys.stdin.read().splitlines()
+
+        _get_table(tables, server)
        
    except Exception as e:
        print("There was a problem getting the max process date!! "+str(e))
