@@ -28,7 +28,11 @@ def _get_table_max_process_date(table_location):
         return ""
 
 def _get_table(tables, server):
-     pass
+    for table in tables[1:]:
+        t = table.split(";")
+        alias = t[0]
+        location = server + t[1]
+        print("Tabla: "+alias+", Max fecha_proceso: "+_get_table_max_process_date(location))
 
 #Execution
 if __name__=="__main__":
