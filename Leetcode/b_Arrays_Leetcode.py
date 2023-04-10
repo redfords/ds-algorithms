@@ -100,13 +100,17 @@ Output: [[9,9],[8,6]]
 
 def largest_local(grid):
     m = list()
+    result = list()
     top = len(grid) - 2
     for t in range(top):
-        print(t)
     #for i in range(len(grid)):
-    for x in range(3):
-        r = [grid[x][n] for n in range(3)]
-        m.append(r)
+        aux = list()
+        for x in range(3):
+            r = [grid[x][n+t] for n in range(3)]
+            m.append(r)
+            aux.append(max(r))
+        result.append(aux)
+    print(result)
     return m
 
     
