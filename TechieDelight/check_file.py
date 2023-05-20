@@ -10,6 +10,15 @@ def _check_file(path,header,delimiter):
     with open(path, "r") as file:
         lines = file.readlines()
 
+        num_lines = len(lines)
+        if header == 'h':
+            num_lines -= 1
+
+        num_cols = len(lines[0].split(delimiter))
+
+        print(header, delimiter)
+        print(num_lines, num_cols)
+
 if __name__ == "__main__":
     try:
         path = sys.argv[1]
