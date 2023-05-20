@@ -1,28 +1,31 @@
 import sys, traceback
 
-def _get_lineas(data_path):
+class bcolors:
+    OK_GREEN = '\033[92m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
 
-    file = Popen(["hadoop", "fs", "-cat", data_path], stdout=PIPE)
-    n_line = 0
-    total = 0
-    
-    for line in file.stdout:
-        new_line = line.strip().replace('|', '').replace('"', '')
-        n_line += 1
-        if len(new_line) != 908:
-            print('Linea con problema: {}'.format(n_line))
-            print('Largo: {}'.format(len(new_line)))
-            print(new_line)
-            print('Linea original:')
-            print(line)
-            total += 1
+def _check_file(path,header,delimiter):
 
-    print('Total lineas con problema: {}'.format(total))
+    with open(path, "r") as file:
+        lines = file.readlines()
 
 if __name__ == "__main__":
     try:
-        data_path = sys.argv[1]
-        _get_lineas(data_path)
+        path = sys.argv[1]
+        header = sys.argv[2]
+        delimiter = sys.argv[3]
+
+        result = _check_file(path,header,delimiter)
+        print(result)
+
+        # if (result[0]==3):
+        #     print(bcolors.OK_GREEN + "SUCCESS! The file is OK!" + bcolors.ENDC)
+        # else:
+        #     print(bcolors.FAIL + "WARNING! The file is NOT OK!" + bcolors.ENDC)
+        #     print("")
+        #     print("Errors detected: ")
+        #     print(result[1])
 
     except Exception as e:
         print(e)
