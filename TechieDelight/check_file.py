@@ -1,5 +1,4 @@
 import sys, traceback
-from subprocess import PIPE, Popen
 
 def _get_lineas(data_path):
 
