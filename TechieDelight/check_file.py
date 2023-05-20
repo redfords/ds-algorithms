@@ -1,4 +1,4 @@
-import sys, traceback
+import sys, traceback, os
 
 class bcolors:
     OK_GREEN = '\033[92m'
@@ -10,28 +10,31 @@ def _check_file(path, header, delimiter):
 
     with open(path, "r") as file:
         lines = file.readlines()
+        line_count = 0
 
         # Get number of columns from first line
         try:
             num_cols = len(lines[0].split(delimiter))
+
             if num_cols == 1:
                 errors.append("First line with no delimiters!")
+                line_count = len(lines)
+                     
+            else:
+                for line in lines:
+                    line_count += 1
+                    
+                    if line.strip() == "":
+                        errors.append("Line break! At line " + str(line_count))
+                    
+                    elif len(line.split(delimiter)) != num_cols:
+                        errors.append("No same amount of columns! At line " + str(line_count))
+
+            if header == "h" and line_count > 0:
+                line_count -= 1
+
         except:
-            print("File is empty")
-
-        line_count = 0
-
-        for line in lines:
-            line_count += 1
-            
-            if line.strip() == "":
-                errors.append("Line break! At line " + str(line_count))
-            
-            elif len(line.split(delimiter)) != num_cols:
-                errors.append("No same amount of columns! At line " + str(line_count))
-
-        if header == "h":
-            line_count -= 1
+            errors.append("File is empty")
 
     file.close()
 
@@ -60,6 +63,7 @@ if __name__ == "__main__":
         print("")
 
     except Exception as e:
-        print(e)
+        print("There was a problem running the script!! " + str(e))
+        print("")
         traceback.print_exc()
-        sys.exit(OSError)
+        sys.exit(os.EX_IOERR)
