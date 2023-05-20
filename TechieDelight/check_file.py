@@ -7,24 +7,23 @@ class bcolors:
 
 def _check_file(path,header,delimiter):
 
+    errors = list()
+
     with open(path, "r") as file:
         lines = file.readlines()
 
         num_lines = len(lines)
-        if header == 'h':
-            num_lines -= 1
-
-        if num_lines == 0:
-            return "Empty file"
 
         num_cols = len(lines[0].split(delimiter))
 
         line_count = 0
         for line in lines:
             line_count += 1
-            
-
-
+            if line.strip() == "":
+                errors.append("Line break! At line " + str(line_count))
+            elif len(line.split(delimiter)) != num_cols:
+                errors.append("No same amount of records! At line " + str(line_count))
+    
         print(header, delimiter)
         print(num_lines, num_cols)
 
