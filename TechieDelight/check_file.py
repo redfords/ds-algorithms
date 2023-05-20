@@ -14,10 +14,21 @@ def _check_file(path,header,delimiter):
         if header == 'h':
             num_lines -= 1
 
+        if num_lines == 0:
+            return "Empty file"
+
         num_cols = len(lines[0].split(delimiter))
+
+        line_count = 0
+        for line in lines:
+            line_count += 1
+            
+
 
         print(header, delimiter)
         print(num_lines, num_cols)
+
+    file.close()
 
 if __name__ == "__main__":
     try:
