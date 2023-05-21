@@ -66,6 +66,7 @@ if __name__ == "__main__":
         print("There was a problem running the script!! " + str(e))
         print("")
         traceback.print_exc()
+        print("")
         print("--------------------------------------(HELP)-----------------------------------------")
         print("If you have trouble running the script, remember this is the command to execute it: ")
         print('        python plfileok.py <file path> <h or nh> <delimiter>')
