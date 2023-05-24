@@ -1,9 +1,14 @@
-import sys, traceback, os
+import sys, traceback, os, chardet
 
 class bcolors:
     OK_GREEN = '\033[92m'
     FAIL = '\033[91m'
     ENDC = '\033[0m'
+
+def _check_encoding(path):
+    with open(path, 'rb') as file:
+        result = chardet.detect(file.read())
+        
 
 def _check_file(path, header, delimiter):
     errors = list()
@@ -45,6 +50,8 @@ if __name__ == "__main__":
         path = sys.argv[1]
         header = sys.argv[2]
         delimiter = sys.argv[3]
+
+        _check_encoding(path)
 
         result = _check_file(path, header, delimiter)
 
