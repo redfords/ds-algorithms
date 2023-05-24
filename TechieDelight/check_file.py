@@ -5,17 +5,20 @@ class bcolors:
     FAIL = '\033[91m'
     ENDC = '\033[0m'
 
-def _check_encoding(path):
-    with open(path, 'rb') as file:
-        result = chardet.detect(file.read())
-        
-
 def _check_file(path, header, delimiter):
     errors = list()
+    line_count = 0
+
+    with open(path, 'rb') as file:
+        result = chardet.detect(file.read())
+        print(result)
+
+    if result.get('confidence') < 0.3:
+        errors.append('Bad encoding! Less than 0.3!!')
+        return [errors, line_count]
 
     with open(path, "r") as file:
         lines = file.readlines()
-        line_count = 0
 
         # Get number of columns from first line
         try:
@@ -41,8 +44,6 @@ def _check_file(path, header, delimiter):
         except:
             errors.append("File is empty")
 
-    file.close()
-
     return [errors, line_count]
 
 if __name__ == "__main__":
@@ -50,8 +51,6 @@ if __name__ == "__main__":
         path = sys.argv[1]
         header = sys.argv[2]
         delimiter = sys.argv[3]
-
-        _check_encoding(path)
 
         result = _check_file(path, header, delimiter)
 
