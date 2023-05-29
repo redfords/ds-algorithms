@@ -4,5 +4,9 @@ Given an integer array nums, return true if any value appears at least twice in 
 """
 
 def contains_duplicate(nums):
-    distinct = set(nums)
-    return len(nums) == len(distinct)
+    distinct = set()
+    for num in nums:
+        if num in distinct:
+            return True
+        distinct.add(num)
+    return False

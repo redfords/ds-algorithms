@@ -4,7 +4,7 @@ import traceback
 
 def a_strings():
     nums = [1,2,3,4]
-    nums = [1,1,1,3,3,4,3,2,4,2,5]
+    # nums = [1,1,1,3,3,4,3,2,4,2,5]
     result = a.contains_duplicate(nums)
 
     print(result)
