@@ -13,12 +13,12 @@ def a_strings():
     t = "scars"
     a.is_anagram(s, t)
 
-    # nums = [2,7,11,15]
-    # target = 9
+    nums = [2,7,11,15]
+    target = 9
     # nums = [3,2,4]
     # target = 6
-    nums = [3,3]
-    target = 6
+    # nums = [3,3]
+    # target = 6
 
     return a.two_sum(nums, target)
 
