@@ -9,8 +9,8 @@ def a_strings():
 
     # s = "anagram"
     # t = "nagaram"
-    s = "rat"
-    t = "car"
+    s = "srats"
+    t = "scars"
 
     return a.is_anagram(s, t)
 
