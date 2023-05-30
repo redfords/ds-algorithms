@@ -19,8 +19,11 @@ def a_strings():
     # target = 6
     # nums = [3,3]
     # target = 6
+    a.two_sum(nums, target)
 
-    return a.two_sum(nums, target)
+    x = 121
+    # x = -121
+    return a.is_palindrome(x)
 
 if __name__=="__main__":
     try:

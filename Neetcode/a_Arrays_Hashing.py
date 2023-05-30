@@ -59,3 +59,15 @@ def two_sum(nums, target):
     #     for j in range(i+1, len(nums)):
     #         if nums[i] + nums[j] == target:
     #             return [i,j]
+
+"""
+9. Palindrome Number
+Given an integer x, return true if x is a palindrome, and false otherwise.
+"""
+
+def is_palindrome(x):
+    if x < 0:
+        return False
+    
+    num = str(x)
+    return num == num[::-1]
