@@ -11,8 +11,16 @@ def a_strings():
     # t = "nagaram"
     s = "srats"
     t = "scars"
+    a.is_anagram(s, t)
 
-    return a.is_anagram(s, t)
+    # nums = [2,7,11,15]
+    # target = 9
+    # nums = [3,2,4]
+    # target = 6
+    nums = [3,3]
+    target = 6
+
+    return a.two_sum(nums, target)
 
 if __name__=="__main__":
     try:
