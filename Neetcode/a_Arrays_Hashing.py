@@ -69,5 +69,19 @@ def is_palindrome(x):
     if x < 0:
         return False
     
-    num = str(x)
-    return num == num[::-1]
+    div = 1
+    while x >= 10 * div:
+        div *= 10
+        print(div)
+    
+    while x:
+        print(x)
+
+        x = (x % div) // 10
+        div = div / 100
+        print(x, div)
+
+    return True
+    
+    # num = str(x)
+    # return num == num[::-1]
