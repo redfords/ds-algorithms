@@ -23,7 +23,11 @@ def a_strings():
 
     x = 121
     # x = -121
-    return a.is_palindrome(x)
+    a.is_palindrome(x)
+
+    strs = ["flower","flow","flight"]
+    # strs = ["dog","racecar","car"]
+    return a.longest_common_prefix(strs)
 
 if __name__=="__main__":
     try:

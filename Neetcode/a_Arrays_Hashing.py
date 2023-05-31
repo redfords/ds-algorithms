@@ -72,16 +72,32 @@ def is_palindrome(x):
     div = 1
     while x >= 10 * div:
         div *= 10
-        print(div)
     
     while x:
-        print(x)
+        right = x % 10
+        left = x // div
+        
+        if left != right:
+            return False
 
         x = (x % div) // 10
         div = div / 100
-        print(x, div)
 
     return True
     
     # num = str(x)
     # return num == num[::-1]
+
+"""
+14. Longest Common Prefix
+Write a function to find the longest common prefix string amongst an array of strings.
+If there is no common prefix, return an empty string "".
+"""
+
+def longest_common_prefix(strs):
+    prefix = ''
+    for i in range(len(strs[0])):
+        for s in strs:
+            if i == len(s) or s[i] != strs[0][i]:
+                return prefix
+        prefix += strs[0][i]
