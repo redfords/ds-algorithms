@@ -21,7 +21,7 @@ def _check_file(path, header, delimiter):
         lines = file.readlines()
 
         # Get number of columns from first line
-        try:
+        if lines:
             num_cols = len(lines[0].split(delimiter))
 
             if num_cols == 1:
@@ -41,7 +41,7 @@ def _check_file(path, header, delimiter):
             if header == "h" and line_count > 0:
                 line_count -= 1
 
-        except:
+        else:
             errors.append("File is empty")
 
     return [errors, line_count]
