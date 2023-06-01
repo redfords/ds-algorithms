@@ -119,3 +119,14 @@ def is_valid(s):
         if s[i] == ')':
             count['('] = count.get('(') - 1
     return all(x == 0 for x in count.values()) 
+
+    # for revision!!
+
+"""
+26. Remove Duplicates from Sorted Array
+Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only
+once. The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
+"""
+
+def remove_duplicates(nums):
+    pass
