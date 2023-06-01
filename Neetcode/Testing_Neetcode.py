@@ -30,7 +30,11 @@ def a_strings():
     a.longest_common_prefix(strs)
 
     s = "(({}})[])"
-    return a.is_valid(s)
+    a.is_valid(s)
+
+    nums = [1,1,2]
+    nums = [0,0,1,1,1,2,2,3,3,4]
+    return a.remove_duplicates(nums)
 
 if __name__=="__main__":
     try:

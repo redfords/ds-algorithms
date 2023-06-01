@@ -130,3 +130,10 @@ once. The relative order of the elements should be kept the same. Then return th
 
 def remove_duplicates(nums):
     pass
+    # n = 1
+        
+    # for r in range(1, len(nums)):
+    #     if nums[r] != nums[r - 1]:
+    #         nums[n] = nums[r]
+    #         n += 1
+    # return n
