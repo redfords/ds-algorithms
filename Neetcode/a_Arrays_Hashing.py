@@ -112,14 +112,10 @@ Every close bracket has a corresponding open bracket of the same type.
 """
 
 def is_valid(s):
-    if len(s) % 2 != 0:
-        return False
-    i = 0
-    while i < len(s):
-        if s[i] == "(" and s[i+1] != ')':
-            return False
-        if s[i] == "{" and s[i+1] != '}':
-            return False
-        if s[i] == "[" and s[i+1] != ']':
-            return False      
-        i += 1
+    count = dict()
+    for i in range(len(s)):
+        if s[i] == '(':
+            count[s[i]] = 1 + count.get(s[i], 0)
+        if s[i] == ')':
+            count['('] = count.get('(') - 1
+    return all(x == 0 for x in count.values()) 

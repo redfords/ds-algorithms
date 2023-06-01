@@ -29,7 +29,7 @@ def a_strings():
     # strs = ["dog","racecar","car"]
     a.longest_common_prefix(strs)
 
-    s = "()[]{}"
+    s = "(({}})[])"
     return a.is_valid(s)
 
 if __name__=="__main__":
