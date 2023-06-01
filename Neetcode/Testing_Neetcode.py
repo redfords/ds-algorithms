@@ -27,7 +27,10 @@ def a_strings():
 
     strs = ["flower","flow","flight"]
     # strs = ["dog","racecar","car"]
-    return a.longest_common_prefix(strs)
+    a.longest_common_prefix(strs)
+
+    s = "()[]{}"
+    return a.is_valid(s)
 
 if __name__=="__main__":
     try:

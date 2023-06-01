@@ -101,3 +101,25 @@ def longest_common_prefix(strs):
             if i == len(s) or s[i] != strs[0][i]:
                 return prefix
         prefix += strs[0][i]
+
+"""
+20. Valid Parentheses
+Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+An input string is valid if:
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Every close bracket has a corresponding open bracket of the same type.
+"""
+
+def is_valid(s):
+    if len(s) % 2 != 0:
+        return False
+    i = 0
+    while i < len(s):
+        if s[i] == "(" and s[i+1] != ')':
+            return False
+        if s[i] == "{" and s[i+1] != '}':
+            return False
+        if s[i] == "[" and s[i+1] != ']':
+            return False      
+        i += 1
