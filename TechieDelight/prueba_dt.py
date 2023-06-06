@@ -1,5 +1,4 @@
 import sys, os, traceback
-import argparse
 from pylightxl import readxl, Database
 
 
@@ -48,9 +47,9 @@ def get_table_data(sheet: list, zone: list, path: str):
     """Reads all rows in the sheet"""
     row = 0
     inc = 0
-    if "2cur" in zone:
+    if zone[1] == "2cur":
         inc = 1
-    if "3ref" in zone:
+    if zone[1] == "3ref":
         inc = 3
 
     while row < len(sheet):
@@ -59,7 +58,7 @@ def get_table_data(sheet: list, zone: list, path: str):
             name = sheet[row][1].lower().strip()
             desc = sheet[row + 1][1]
             row += 4
-            if "3ref" in zone:
+            if zone[1] == "3ref":
                 row += 1
             cols = list()
             while sheet[row][0] != 'Generado por el proceso':
