@@ -34,7 +34,13 @@ def a_strings():
 
     nums = [1,1,2]
     nums = [0,0,1,1,1,2,2,3,3,4]
-    return a.remove_duplicates(nums)
+    a.remove_duplicates(nums)
+
+    haystack = "hello"
+    needle = "ll"
+    haystack = "mississippi"
+    needle = "issi"
+    return a.str_str(haystack, needle)
 
 if __name__=="__main__":
     try:
