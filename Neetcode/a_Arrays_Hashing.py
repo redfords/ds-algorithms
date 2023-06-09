@@ -129,16 +129,8 @@ once. The relative order of the elements should be kept the same. Then return th
 """
 
 def remove_duplicates(nums):
-    
-    
-    i = 1
-    while i < len(nums):
-        print(nums[i])
-        i += 1
-
-
-
-
+        
+    pass
     # n = 1
         
     # for r in range(1, len(nums)):
