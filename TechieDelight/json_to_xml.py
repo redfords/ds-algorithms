@@ -1,4 +1,4 @@
-import sys
+import sys, json, traceback
 
 class NoGroupException(Exception):
     '''Raise when the group argument is missing'''
@@ -15,12 +15,21 @@ if __name__ == "__main__":
     try:
         group = sys.argv[1].lower()
     except:
-        raise NoGroupException("Group must be the first argument")
+        raise NoGroupException("Group must be the first argument.")
     try:
         pan_no = sys.argv[2].lower()
     except:
-        raise NoPanException("Pan number must be the second argument")
+        raise NoPanException("Pan number must be the second argument.")
+    try:
+        trx = json.loads(sys.stdin.read())
+    except:
+        raise TRXFormatNotValidException("TRX Input content is not of valid json type.")
     
+    try:
+        print()
+    except Exception as e:
+        print("Json could not be created with input.")
+        traceback.print_exc()
     
 
 
