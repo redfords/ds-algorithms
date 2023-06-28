@@ -21,15 +21,10 @@ if __name__ == "__main__":
     except:
         raise NoPanException("Pan number must be the second argument.")
     try:
-        # trx = json.loads(sys.stdin.read())
-
         with open('sample_trx.json') as file:
             trx = json.load(file)
-
-        print(trx)
     except:
         raise TRXFormatNotValidException("TRX Input content is not of valid json type.")
-    
     try:
         print()
     except Exception as e:
