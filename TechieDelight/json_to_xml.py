@@ -24,9 +24,9 @@ if __name__ == "__main__":
         # trx = json.loads(sys.stdin.read())
 
         with open('sample_trx.json') as file:
-            file_contents = file.read()
+            trx = json.load(file)
 
-        trx = json.loads(file_contents)
+        print(trx)
     except:
         raise TRXFormatNotValidException("TRX Input content is not of valid json type.")
     
