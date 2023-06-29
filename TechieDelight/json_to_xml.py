@@ -9,6 +9,9 @@ class NoPanException(Exception):
 class TRXFormatNotValidException(Exception):
     '''Raise when the input is not json format'''
 
+def generate_xml(trx, group, pan_no):
+    pass
+
 if __name__ == "__main__":
     sys.setdefaultencoding = "utf-8"
 
@@ -26,7 +29,7 @@ if __name__ == "__main__":
     except:
         raise TRXFormatNotValidException("TRX Input content is not of valid json type.")
     try:
-        print()
+        print('#&&#'.join(generate_xml(trx, group, pan_no)))
     except Exception as e:
         print("Json could not be created with input.")
         traceback.print_exc()
