@@ -12,6 +12,12 @@ class TRXFormatNotValidException(Exception):
 def generate_xml(trx, group, pan_no):
     pass
 
+def fill_xml(trx_obj, group):
+    xml_template = """
+    """
+
+    return xml_template
+
 if __name__ == "__main__":
     sys.setdefaultencoding = "utf-8"
 
