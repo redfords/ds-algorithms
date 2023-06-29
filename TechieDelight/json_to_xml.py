@@ -9,10 +9,21 @@ class NoPanException(Exception):
 class TRXFormatNotValidException(Exception):
     '''Raise when the input is not json format'''
 
-def generate_xml(trx, group, pan_no):
-    pass
+class Transaction:
+    def __init__(self, trx_type, trx_data, trx_pan, group, acc_no = 0):
+        pass
 
-def fill_xml(trx_obj, group):
+def generate_xml(data: json, group: str, pan_no: str) -> list:
+    """Returns a list of an xml per trx"""
+    trx_obj = Transaction(trx_type=data["request"]["idActivity"],
+                          trx_data=data,
+                          trx_pan=pan_no,
+                          group=group)
+    
+    return [fill_xml(trx_obj, pan_no)]
+
+def fill_xml(trx_obj: str, group: str) -> str:
+    """Returns the xml template with the trx data"""
     xml_template = """
     """
 
