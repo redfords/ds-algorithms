@@ -34,13 +34,13 @@ def generate_xml(data: json, group: str, pan_no: str) -> list:
 
 def fill_xml(trx_obj: str, group: str) -> str:
     """Returns the xml template with the trx data"""
-    return """<?xml version="1.0" encoding="UTF-8"?>
+    return f"""<?xml version="1.0" encoding="UTF-8"?>
                     <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.ws.spfservices.redlink.com.ar/">
                     <soapenv:Header>
                         <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" soapenv:mustUnderstand="1">
                             <wsse:UsernameToken wsu:Id="UsernameToken-C734DACD44C7F029F816195003929764">
-                                <wsse:Username>%s</wsse:Username>
-                                <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">%s</wsse:Password>
+                                <wsse:Username>{WS_USER.get(group)}</wsse:Username>
+                                <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">{WS_PASSWORD.get(group)}</wsse:Password>
                             </wsse:UsernameToken>
                         </wsse:Security>
                     </soapenv:Header>
@@ -49,50 +49,50 @@ def fill_xml(trx_obj: str, group: str) -> str:
                             <!--Optional:-->
                             <requerimientoUploadTransaction>
                                 <cabecera>
-                                <idRequerimiento>%s</idRequerimiento>
-                                <ipCliente>%s</ipCliente>
-                                <timeStamp>%s</timeStamp>
-                                <idEntidad>%s</idEntidad>
-                                <canal>%s</canal>
+                                <idRequerimiento>{trx_obj.idRequerimiento}</idRequerimiento>
+                                <ipCliente>{trx_obj.ipCliente}</ipCliente>
+                                <timeStamp>{trx_obj.timeStamp}</timeStamp>
+                                <idEntidad>{trx_obj.idEntidad}</idEntidad>
+                                <canal>{trx_obj.canal}</canal>
                                 </cabecera>
                                 <datosTransaction>
-                                <fiidTerm>%s</fiidTerm>
-                                <termId>%s</termId>
-                                <fiidCard>%s</fiidCard>
-                                <pan>%s</pan>
-                                <seqNum>%s</seqNum>
-                                <tranDat>%s</tranDat>
-                                <tranTim>%s</tranTim>
-                                <typ>%s</typ>
-                                <typCde>%s</typCde>
-                                <postDat>%s</postDat>
-                                <tranCde>%s</tranCde>
-                                <fromAcct>%s</fromAcct>
-                                <tipoDep>%s</tipoDep>
-                                <toAcct>%s</toAcct>
-                                <importe>%s</importe>
-                                <respCde>%s</respCde>
-                                <issuerFiid>%s</issuerFiid>
-                                <termType>%s</termType>
-                                <tipoCambio>%s</tipoCambio>
-                                <tipoCambioC>%s</tipoCambioC>
-                                <cuota>%s</cuota>
-                                <ente>%s</ente>
-                                <termLn>%s</termLn>
-                                <crncyCde>%s</crncyCde>
-                                <cardType>%s</cardType>
-                                <codigoPais>%s</codigoPais>
-                                <locTerm>%s</locTerm>
-                                <denEstabl>%s</denEstabl>
-                                <establecimiento>%s</establecimiento>
-                                <rubro>%s</rubro>
-                                <cvvrc>%s</cvvrc>
-                                <direccionIp>%s</direccionIp>
-                                <canal>%s</canal>
-                                <producto>%s</producto>
-                                <tel>%s</tel>
-                                <crdLn>%s</crdLn>
-                                <codigoPaisEntidad>%s</codigoPaisEntidad>
+                                <fiidTerm>{trx_obj.fiidTerm}</fiidTerm>
+                                <termId>{trx_obj.termId}</termId>
+                                <fiidCard>{trx_obj.fiidCard}</fiidCard>
+                                <pan>{trx_obj.pan}</pan>
+                                <seqNum>{trx_obj.seqNum}</seqNum>
+                                <tranDat>{trx_obj.tranDat}</tranDat>
+                                <tranTim>{trx_obj.tranTim}</tranTim>
+                                <typ>{trx_obj.typ}</typ>
+                                <typCde>{trx_obj.typCde}</typCde>
+                                <postDat>{trx_obj.postDat}</postDat>
+                                <tranCde>{trx_obj.tranCde}</tranCde>
+                                <fromAcct>{trx_obj.fromAcct}</fromAcct>
+                                <tipoDep>{trx_obj.tipoDep}</tipoDep>
+                                <toAcct>{trx_obj.toAcct}</toAcct>
+                                <importe>{trx_obj.importe}</importe>
+                                <respCde>{trx_obj.respCde}</respCde>
+                                <issuerFiid>{trx_obj.issuerFiid}</issuerFiid>
+                                <termType>{trx_obj.termType}</termType>
+                                <tipoCambio>{trx_obj.tipoCambio}</tipoCambio>
+                                <tipoCambioC>{trx_obj.tipoCambioC}</tipoCambioC>
+                                <cuota>{trx_obj.cuota}</cuota>
+                                <ente>{trx_obj.ente}</ente>
+                                <termLn>{trx_obj.termLn}</termLn>
+                                <crncyCde>{trx_obj.crncyCde}</crncyCde>
+                                <cardType>{trx_obj.cardType}</cardType>
+                                <codigoPais>{trx_obj.codigoPais}</codigoPais>
+                                <locTerm>{trx_obj.locTerm}</locTerm>
+                                <denEstabl>{trx_obj.denEstabl}</denEstabl>
+                                <establecimiento>{trx_obj.establecimiento}</establecimiento>
+                                <rubro>{trx_obj.rubro}</rubro>
+                                <cvvrc>{trx_obj.cvvrc}</cvvrc>
+                                <direccionIp>{trx_obj.direccionIp}</direccionIp>
+                                <canal>{trx_obj.canal}</canal>
+                                <producto>{trx_obj.producto}</producto>
+                                <tel>{trx_obj.tel}</tel>
+                                <crdLn>{trx_obj.crdLn}</crdLn>
+                                <codigoPaisEntidad>{trx_obj.codigoPaisEntidad}</codigoPaisEntidad>
                                 </datosTransaction>
                             </requerimientoUploadTransaction>
                         </ser:uploadTransaction>
