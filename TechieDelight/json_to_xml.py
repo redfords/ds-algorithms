@@ -9,6 +9,16 @@ class NoPanException(Exception):
 class TRXFormatNotValidException(Exception):
     '''Raise when the input is not json format'''
 
+WS_USER = {
+    "a": "SV_SPFSERVICES_0386",
+    "b": "SV_SPFSERVICES_0071"
+}
+
+WS_PASSWORD = {
+    "a": "*7BR5CpZBYdiaLqVP9(n",
+    "b": "gRTq4ErLcJ_TGwy_LVhR"
+}
+
 class Transaction:
     def __init__(self, trx_type, trx_data, trx_pan, group, acc_no = 0):
         pass
