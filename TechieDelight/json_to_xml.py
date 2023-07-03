@@ -20,13 +20,13 @@ GROUP_NODES = {
 }
 
 WS_USER = {
-    "a": "SV_SPFSERVICES_0001",
-    "b": "SV_SPFSERVICES_0002"
+    "a": "sv_services_0001",
+    "b": "sv_services_0002"
 }
 
 WS_PASSWORD = {
-    "a": "*7BR5CpZBYdiaLqVP9(n",
-    "b": "gRTq4ErLcJ_TGwy_LVhR"
+    "a": "g6skUqnC817Hjs23",
+    "b": "kID9Hndy7f2B1a6x"
 }
 
 class Transaction:
