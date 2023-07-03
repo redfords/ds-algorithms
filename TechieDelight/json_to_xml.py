@@ -79,6 +79,54 @@ class Transaction:
         self.crdLn = self._get_crdLn()
         self.codigoPaisEntidad = "032"
 
+    def _get_idRequerimiento(self):
+        pass
+
+    def _get_timeStamp(self):
+        pass
+
+    def _get_fiidCard(self):
+        pass
+
+    def _get_seqNum(self):
+        pass
+
+    def _get_tranDat(self):
+        pass
+
+    def _get_tranCde(self):
+        pass
+
+    def _get_fromAcct(self):
+        pass
+
+    def _get_toAcct(self):
+        pass
+
+    def _get_importe(self):
+        pass
+
+    def _get_respCde(self):
+        pass
+
+    def _get_issuerFiid(self):
+        pass
+
+    def _get_termType(self):
+        pass
+
+    def _get_crncyCde(self):
+        pass
+
+    def _get_direccionIp(self):
+        pass
+
+    def _get_canal(self):
+        pass
+
+    def _get_crdLn(self):
+        pass
+
 def generate_xml(data: json, group: str, pan_no: str) -> list:
     """Returns a list of an xml per trx"""
     trx_obj = Transaction(trx_type=data["request"]["idActivity"],
