@@ -10,18 +10,18 @@ class TRXFormatNotValidException(Exception):
     '''Raise when the input is not json format'''
 
 GROUP_ID = {
-    "a": "0386",
-    "b": "0071"
+    "a": "0001",
+    "b": "0002"
 }
 
 GROUP_NODES = {
-    "a": "172.30.215.150",
-    "b": "172.30.215.152"
+    "a": "172.30.215.100",
+    "b": "172.30.215.101"
 }
 
 WS_USER = {
-    "a": "SV_SPFSERVICES_0386",
-    "b": "SV_SPFSERVICES_0071"
+    "a": "SV_SPFSERVICES_0001",
+    "b": "SV_SPFSERVICES_0002"
 }
 
 WS_PASSWORD = {
@@ -34,14 +34,14 @@ class Transaction:
         self.trx_type = trx_type
         self.trx_data = trx_data
         self.trx_entity = group
-        #cabecera
+        # header
         self.idRequerimiento = self._get_idRequerimiento()
-        self.ipCliente = ENTITY_NODES.get(self.trx_entity)
+        self.ipCliente = GROUP_NODES.get(self.trx_entity)
         self.timeStamp = self._get_timeStamp()
-        self.idEntidad = ENTITY_ID.get(self.trx_entity)
+        self.idEntidad = GROUP_ID.get(self.trx_entity)
         self.canalCabecera = "HBP"
-        #datosTransaction
-        self.fiidTerm = ENTITY_ID.get(self.trx_entity)
+        # transaction data
+        self.fiidTerm = GROUP_ID.get(self.trx_entity)
         self.termId = "0"*16
         self.fiidCard = self._get_fiidCard()
         self.pan = trx_pan
@@ -63,7 +63,7 @@ class Transaction:
         self.tipoCambioC = "0"*8
         self.cuota = "0"*5
         self.ente = "0"*3
-        self.termLn = ENTITY_ID.get(self.trx_entity)
+        self.termLn = GROUP_ID.get(self.trx_entity)
         self.crncyCde = self._get_crncyCde(acc_no)
         self.cardType = "P "
         self.codigoPais = "032"
