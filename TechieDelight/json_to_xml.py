@@ -33,15 +33,15 @@ class Transaction:
     def __init__(self, trx_type, trx_data, trx_pan, group, acc_no = 0):
         self.trx_type = trx_type
         self.trx_data = trx_data
-        self.trx_entity = group
+        self.trx_group = group
         # header
         self.idRequerimiento = self._get_idRequerimiento()
-        self.ipCliente = GROUP_NODES.get(self.trx_entity)
+        self.ipCliente = GROUP_NODES.get(self.trx_group)
         self.timeStamp = self._get_timeStamp()
-        self.idEntidad = GROUP_ID.get(self.trx_entity)
+        self.idEntidad = GROUP_ID.get(self.trx_group)
         self.canalCabecera = "HBP"
         # transaction data
-        self.fiidTerm = GROUP_ID.get(self.trx_entity)
+        self.fiidTerm = GROUP_ID.get(self.trx_group)
         self.termId = "0"*16
         self.fiidCard = self._get_fiidCard()
         self.pan = trx_pan
@@ -63,7 +63,7 @@ class Transaction:
         self.tipoCambioC = "0"*8
         self.cuota = "0"*5
         self.ente = "0"*3
-        self.termLn = GROUP_ID.get(self.trx_entity)
+        self.termLn = GROUP_ID.get(self.trx_group)
         self.crncyCde = self._get_crncyCde(acc_no)
         self.cardType = "P "
         self.codigoPais = "032"
