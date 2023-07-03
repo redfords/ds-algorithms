@@ -9,6 +9,16 @@ class NoPanException(Exception):
 class TRXFormatNotValidException(Exception):
     '''Raise when the input is not json format'''
 
+GROUP_ID = {
+    "a": "0386",
+    "b": "0071"
+}
+
+GROUP_NODES = {
+    "a": "172.30.215.150",
+    "b": "172.30.215.152"
+}
+
 WS_USER = {
     "a": "SV_SPFSERVICES_0386",
     "b": "SV_SPFSERVICES_0071"
@@ -21,7 +31,53 @@ WS_PASSWORD = {
 
 class Transaction:
     def __init__(self, trx_type, trx_data, trx_pan, group, acc_no = 0):
-        pass
+        self.trx_type = trx_type
+        self.trx_data = trx_data
+        self.trx_entity = group
+        #cabecera
+        self.idRequerimiento = self._get_idRequerimiento()
+        self.ipCliente = ENTITY_NODES.get(self.trx_entity)
+        self.timeStamp = self._get_timeStamp()
+        self.idEntidad = ENTITY_ID.get(self.trx_entity)
+        self.canalCabecera = "HBP"
+        #datosTransaction
+        self.fiidTerm = ENTITY_ID.get(self.trx_entity)
+        self.termId = "0"*16
+        self.fiidCard = self._get_fiidCard()
+        self.pan = trx_pan
+        self.seqNum = self._get_seqNum()
+        self.tranDat = self._get_tranDat()
+        self.tranTim = self._get_tranTim()
+        self.typ = "0210"
+        self.typCde =  "31"
+        self.postDat = self._get_tranDat()
+        self.tranCde =  self._get_tranCde(acc_no)
+        self.fromAcct = self._get_fromAcct()
+        self.tipoDep = "0"
+        self.toAcct = self._get_toAcct()
+        self.importe = self._get_importe()
+        self.respCde = self._get_respCde()
+        self.issuerFiid = self._get_issuerFiid()
+        self.termType = self._get_termType()
+        self.tipoCambio = "0"*8
+        self.tipoCambioC = "0"*8
+        self.cuota = "0"*5
+        self.ente = "0"*3
+        self.termLn = ENTITY_ID.get(self.trx_entity)
+        self.crncyCde = self._get_crncyCde(acc_no)
+        self.cardType = "P "
+        self.codigoPais = "032"
+        self.locTerm = "0"*13
+        self.denEstabl = "0"*25
+        self.establecimiento = "0"*15
+        self.rubro = "0"*5
+        self.cvvrc = "0"
+        self.direccionIp = self._get_direccionIp()
+        self.canal = self._get_canal()
+        self.producto = "0"*2
+        self.tel = "0"*20
+        self.crdLn = self._get_crdLn()
+        self.codigoPaisEntidad = "032"
 
 def generate_xml(data: json, group: str, pan_no: str) -> list:
     """Returns a list of an xml per trx"""
