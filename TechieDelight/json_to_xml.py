@@ -94,10 +94,10 @@ class Transaction:
         return 'a'
 
     def _get_tranDat(self):
-        return 'a'
+        return self.idRequerimiento[2:8]
     
     def _get_tranTim(self):
-        return 'a'
+        return self.idRequerimiento[8:14]
 
     def _get_tranCde(self):
         return 'a'
