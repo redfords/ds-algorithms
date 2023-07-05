@@ -112,13 +112,17 @@ class Transaction:
         return 'a'
 
     def _get_respCde(self):
-        return 'a'
+        code = str(self.trx_data["returnCode"]["code"])
+        if code == "0": return "000" 
+        else: return "999"
 
     def _get_issuerFiid(self):
         return 'a'
 
     def _get_termType(self):
-        return 'a'
+        channel = self.trx_data["request"]["channel"]
+        if channel == "frontend": return "53"
+        elif channel == "phonegap": return "82"
 
     def _get_crncyCde(self):
         return 'a'
@@ -127,7 +131,9 @@ class Transaction:
         return 'a'
 
     def _get_canal(self):
-        return 'a'
+        channel = self.trx_data["request"]["channel"]
+        if channel == "frontend": return "06"
+        elif channel == "phonegap": return "11"
 
     def _get_crdLn(self):
         return 'a'
