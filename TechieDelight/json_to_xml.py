@@ -51,7 +51,7 @@ class Transaction:
         self.typ = "0210"
         self.typCde =  "31"
         self.postDat = self._get_tranDat()
-        self.tranCde =  self._get_tranCde(acc_no)
+        self.tranCde =  self._get_tranCde()
         self.fromAcct = self._get_fromAcct()
         self.tipoDep = "0"
         self.toAcct = self._get_toAcct()
@@ -64,7 +64,7 @@ class Transaction:
         self.cuota = "0"*5
         self.ente = "0"*3
         self.termLn = GROUP_ID.get(self.trx_group)
-        self.crncyCde = self._get_crncyCde(acc_no)
+        self.crncyCde = self._get_crncyCde()
         self.cardType = "P "
         self.codigoPais = "032"
         self.locTerm = "0"*13
@@ -80,52 +80,55 @@ class Transaction:
         self.codigoPaisEntidad = "032"
 
     def _get_idRequerimiento(self):
-        pass
+        return 'a'
 
     def _get_timeStamp(self):
-        pass
+        return 'a'
 
     def _get_fiidCard(self):
-        pass
+        return 'a'
 
     def _get_seqNum(self):
-        pass
+        return 'a'
 
     def _get_tranDat(self):
-        pass
+        return 'a'
+    
+    def _get_tranTim(self):
+        return 'a'
 
     def _get_tranCde(self):
-        pass
+        return 'a'
 
     def _get_fromAcct(self):
-        pass
+        return 'a'
 
     def _get_toAcct(self):
-        pass
+        return 'a'
 
     def _get_importe(self):
-        pass
+        return 'a'
 
     def _get_respCde(self):
-        pass
+        return 'a'
 
     def _get_issuerFiid(self):
-        pass
+        return 'a'
 
     def _get_termType(self):
-        pass
+        return 'a'
 
     def _get_crncyCde(self):
-        pass
+        return 'a'
 
     def _get_direccionIp(self):
-        pass
+        return 'a'
 
     def _get_canal(self):
-        pass
+        return 'a'
 
     def _get_crdLn(self):
-        pass
+        return 'a'
 
 def generate_xml(data: json, group: str, pan_no: str) -> list:
     """Returns a list of an xml per trx"""
