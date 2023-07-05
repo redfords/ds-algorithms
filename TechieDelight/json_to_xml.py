@@ -83,10 +83,10 @@ class Transaction:
         return 'a'
 
     def _get_timeStamp(self):
-        return 'a'
+        return self._get_idRequerimiento()
 
     def _get_fiidCard(self):
-        return 'a'
+        return GROUP_ID.get(self.trx_group)
 
     def _get_seqNum(self):
         return 'a'
