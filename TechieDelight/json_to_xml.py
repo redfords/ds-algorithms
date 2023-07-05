@@ -1,4 +1,4 @@
-import sys, json, traceback
+import sys, json, traceback, re
 
 class NoGroupException(Exception):
     '''Raise when the group argument is missing'''
@@ -80,7 +80,8 @@ class Transaction:
         self.codigoPaisEntidad = "032"
 
     def _get_idRequerimiento(self):
-        return 'a'
+        datetime = self.trx_data["request"]["dateTime"][0:-3]
+        return datetime.replace('.', '').replace('-', '').replace('T', '').replace(':', '')
 
     def _get_timeStamp(self):
         return self._get_idRequerimiento()
@@ -89,6 +90,7 @@ class Transaction:
         return GROUP_ID.get(self.trx_group)
 
     def _get_seqNum(self):
+        # generate seqnum from timestamp
         return 'a'
 
     def _get_tranDat(self):
