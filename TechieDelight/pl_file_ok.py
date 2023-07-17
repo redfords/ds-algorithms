@@ -187,7 +187,7 @@ if __name__=="__main__":
        print('        python plfileok.py /home/csvs/creditcards20230405.csv h "|" nfw enc ngzip')
        print('        python plfileok.py /home/dats/mlmovements20220311.dat nh no fw enc ngzip')
        print('        python plfileok.py /home/dats/mlmovements20220311.dat nh no fw enc ngzip')
-       print('        python plfileok.py /home/dats/tlmovements20211321.dat h "-" nfw nen65555555555555555555555555555555555ñpt45c gzip')
+       print('        python plfileok.py /home/dats/tlmovements20211321.dat h "-" nfw nenc gzip')
        print('')
        print('WARNING! If you make a mistake in the args input and you enter a valid delimiter but')
        print('you do not put fixed width with "no" but with "fw" the script will consider your file as fw one!')
