@@ -1,4 +1,5 @@
 import sys, gzip, os, traceback
+import cchardet as chardet
 
 class bcolors:
     OK_GREEN = '\033[92m'
@@ -46,15 +47,33 @@ def _read_file(file, header, delimiter, width):
         return _fw_process_iter(file, header)
     else:
         return _delim_process_iter(file, header, delimiter)
+    
+def _get_encoding(path):
+    try:
+        with gzip.open(path, 'rb') as file:
+            return chardet.detect(file.read())
+    except:
+        with open(path, 'rb') as file:
+            return chardet.detect(file.read())
 
 def _check_planding_file(path, header, delimiter, width):
+    # check if file is empty
     if not os.stat(path).st_size:
-        return [['Empty file!!'], 0] 
+        return [['Empty file!!'], 0]
+    
+    # check file encoding
+    print("Checking encoding...")
+    encoding = _get_encoding(path)
+    print(encoding, '\n')
+    if float(encoding.get('confidence')) < 0.3:
+        return [['Bad encoding! Less than 0.3!!'], 0]
+    
+    # get no. of records and check line by line
     try:
         with gzip.open(path, 'r') as file:
             return _read_file(file, header, delimiter, width)
     except:
-        with open(path, "r") as file:
+        with open(path, "rb") as file:
             return _read_file(file, header, delimiter, width)
 
 if __name__=="__main__":
@@ -63,17 +82,12 @@ if __name__=="__main__":
         header = sys.argv[2]
         delimiter = sys.argv[3]
         width = sys.argv[4]
-    except IndexError:
-        print("Run with the following arguments:\n"
-              "python3 pl_file_ok.py <file path> <h or nh> <delimiter> <fw or nfw>\n")
-        sys.exit(1)
-    try:
         print("---> Starting File Check...\n")
         result = _check_planding_file(path, header, delimiter, width)
         if (result[0]):
             print(bcolors.FAIL + "WARNING! The file is NOT OK!\n" + bcolors.ENDC)
             print("Errors detected ({0}): ".format(len(result[0])))
-            print(("\n").join(result[0]))
+            print(("\n").join(result[0]), "\n")
         else:
             print(bcolors.OK_GREEN + "SUCCESS! The file is OK!\n" + bcolors.ENDC)
         print("COUNTS:")
@@ -81,4 +95,6 @@ if __name__=="__main__":
     except Exception:
         print("There was a problem running the script!!\n")
         traceback.print_exc()
+        print("\nRun with the following arguments:\n"
+              "python3 pl_file_ok.py <file path> <h or nh> <delimiter> <fw or nfw>\n")
         sys.exit(1)
