@@ -1,5 +1,5 @@
 import sys, gzip, os, traceback
-import cchardet as chardet
+# import cchardet as chardet
 
 class bcolors:
     OK_GREEN = '\033[92m'
@@ -48,13 +48,13 @@ def _read_file(file, header, delimiter, width):
     else:
         return _delim_process_iter(file, header, delimiter)
     
-def _get_encoding(path):
-    try:
-        with gzip.open(path, 'rb') as file:
-            return chardet.detect(file.read())
-    except:
-        with open(path, 'rb') as file:
-            return chardet.detect(file.read())
+# def _get_encoding(path):
+    # try:
+        # with gzip.open(path, 'rb') as file:
+            # return chardet.detect(file.read())
+    # except:
+        # with open(path, 'rb') as file:
+            # return chardet.detect(file.read())
 
 def _check_planding_file(path, header, delimiter, width):
     # check if file is empty
@@ -62,11 +62,11 @@ def _check_planding_file(path, header, delimiter, width):
         return [['Empty file!!'], 0]
     
     # check file encoding
-    print("Checking encoding...")
-    encoding = _get_encoding(path)
-    print(encoding, '\n')
-    if float(encoding.get('confidence')) < 0.3:
-        return [['Bad encoding! Less than 0.3!!'], 0]
+    # print("Checking encoding...")
+    # encoding = _get_encoding(path)
+    # print(encoding, '\n')
+    # if float(encoding.get('confidence')) < 0.3:
+        # return [['Bad encoding! Less than 0.3!!'], 0]
     
     # get no. of records and check line by line
     try:
