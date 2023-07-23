@@ -1,7 +1,7 @@
 from sys import argv
 from traceback import print_exc
 from pyspark.sql.types import StringType
-from pyspark.sql.functions import udf
+from pyspark.sql.functions import udf, col, when, concat
 from pyspark.sql.session import SparkSession
 
 
@@ -47,7 +47,19 @@ class OmniReporteExtendido():
         self.contexts = {}
         self.contexts['spark'] = spark
 
+        # empiazo el primer df
         data = self.contexts['spark'].read.csv('hdfs://' + path_input, sep='|', header=True, inferSchema = False)
+
+        # convertir formato monto
+        data = data.withColumn("monto", udf_monto("amt_1"))\
+            .withColumn("monto", col("monto")/100)
+        
+        amt = data.withColumn("amt", col("monto").cast('decimal(16,2)'))
+        
+        amt.show()
+        amt=amt.orderBy("Codigo")        
+        amt.coalesce(1).write.option("sep", "|").format("com.databricks.spark.csv").option("header","true")\
+            .option("ignoreLeadingWhiteSpace", "false").option("ignoreTrailingWhiteSpace", "false").mode("append").save(path_output)
 
 
 
