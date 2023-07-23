@@ -46,15 +46,29 @@ class OmniReporteExtendido():
                     .getOrCreate()
         self.contexts = {}
         self.contexts['spark'] = spark
-
-        # empiazo el primer df
+        
+        # plazo fijo cc pesos
         data = self.contexts['spark'].read.csv('hdfs://' + path_input, sep='|', header=True, inferSchema = False)
 
-        # convertir formato monto
+        # where  T_cde = "18" and T_from = "01" 
+
+
+        # convierto amt_1 en monto
         data = data.withColumn("monto", udf_monto("amt_1"))\
             .withColumn("monto", col("monto")/100)
         
+        # reemplazo decimal
         amt = data.withColumn("amt", col("monto").cast('decimal(16,2)'))
+
+        # convierto orig_crncy_cde en moneda
+
+        # cuil, fecha, hora
+
+        # term_typ, codigo, tipo, cantidad, codigo respuesta
+
+        # order by tran_dat
+        
+
         
         amt.show()
         amt=amt.orderBy("Codigo")        
