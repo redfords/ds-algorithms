@@ -3,21 +3,16 @@ DESCOMPRIMIR
 
 Copiar en coded_string la columna data para descomprimir.
 
-Para buscar en cyberbank por fecha y hora:
-SELECT *
-FROM CBANKDB.CLIENT_AUDIT_LOG_EXTRA cale 
-WHERE cale.DATE_TIME = TO_DATE('2023-07-12 23:22:57','yyyy-MM-dd HH24:MI:ss');
-
 Para buscar en raw por fecha y hora:
-SELECT *
-FROM pr_bsc_1raw.cyberbank_individuos_mensajeiso
-WHERE substring(date_time, 0, 19) = '2023-07-12 23:59:59';
+SELECT * FROM pr_bsc_1raw.cyberbank_individuos_mensajeiso
+WHERE substring(date_time, 0, 19) = '2023-07-23 23:59:59' AND fecha_proceso = '20230724'
+AND record_type = "request" AND service = 'AltaPlazoFijo';
 """
 
 import base64
 import zlib
 
-coded_string = 'H4sIAAAAAAAAAFWOMQ7CMAxF954iyoxUx4lpxQEYUYdewEksxFBShXZAiLtDGqSK0e99+f9Xo5Se+SqXdfKS9Ulpow8FcghpvS/jc5ZC4YcjLzKmLWdacC0CYjVZQsrxMUgevv9KAqGaW9yuyIatRbbeO8fInacjmcAC0Tvu/mr3OUiWqO+J9v5zTlNRFlqwdUHz/gDEQrgRygAAAA=='
+coded_string = 'H4sIAAAAAAAAALVQuwrDMAz8lexd7iRLtscUAu3QpP//NZUTh5SSQpceCMsn6fSAAFfRsQCUMqEmTuhg6m+RztQ9lEVFrVrNbjUqV7+xe5QcDmjW4kCoOBIlKYYzbFqbH50YSu49tjzm+1sqfkWMyTDVpKbeBqG0PQ6peRhPp/kD4lBtjzBe1sMq4jDty1j2CbHl9rXUPynSDlIKLAPJRUqun6kvnwGfnuYBAAA='
 bytecode = base64.b64decode(coded_string)
 decoded = zlib.decompress(bytecode, zlib.MAX_WBITS|16)
 print(decoded)
@@ -50,3 +45,4 @@ t_cde + t_from
 6110 - Seleccion De Cuenta Primaria
 6111 - Mensaje A La Institucion - Cierre De Cuenta
 """
+
