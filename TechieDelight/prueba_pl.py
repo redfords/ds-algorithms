@@ -1,10 +1,5 @@
 import sys, gzip, os, traceback
-# import cchardet as chardet
-
-class bcolors:
-    OK_GREEN = '\033[92m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
+import cchardet as chardet
 
 def _delim_process_iter(file, header, delimiter):
     errors = list()
@@ -48,13 +43,13 @@ def _read_file(file, header, delimiter, width):
     else:
         return _delim_process_iter(file, header, delimiter)
     
-# def _get_encoding(path):
-    # try:
-        # with gzip.open(path, 'rb') as file:
-            # return chardet.detect(file.read())
-    # except:
-        # with open(path, 'rb') as file:
-            # return chardet.detect(file.read())
+def _get_encoding(path):
+    try:
+        with gzip.open(path, 'rb') as file:
+            return chardet.detect(file.read())
+    except:
+        with open(path, 'rb') as file:
+            return chardet.detect(file.read())
 
 def _check_planding_file(path, header, delimiter, width):
     # check if file is empty
@@ -62,11 +57,11 @@ def _check_planding_file(path, header, delimiter, width):
         return [['Empty file!!'], 0]
     
     # check file encoding
-    # print("Checking encoding...")
-    # encoding = _get_encoding(path)
-    # print(encoding, '\n')
-    # if float(encoding.get('confidence')) < 0.3:
-        # return [['Bad encoding! Less than 0.3!!'], 0]
+    print("Checking encoding...")
+    encoding = _get_encoding(path)
+    print(encoding)
+    if float(encoding.get('confidence')) < 0.3:
+        return [['Bad encoding! Less than 0.3!!'], 0]
     
     # get no. of records and check line by line
     try:
@@ -82,19 +77,23 @@ if __name__=="__main__":
         header = sys.argv[2]
         delimiter = sys.argv[3]
         width = sys.argv[4]
-        print("---> Starting File Check...\n")
+        print("---> Starting File Check...")
+        print("")
         result = _check_planding_file(path, header, delimiter, width)
         if (result[0]):
-            print(bcolors.FAIL + "WARNING! The file is NOT OK!\n" + bcolors.ENDC)
+            print("WARNING! The file is NOT OK!")
+            print("")
             print("Errors detected ({0}): ".format(len(result[0])))
-            print(("\n").join(result[0]), "\n")
+            for r in result[0]:
+                print(r)
         else:
-            print(bcolors.OK_GREEN + "SUCCESS! The file is OK!\n" + bcolors.ENDC)
+            print("SUCCESS! The file is OK!")
+        print("")
         print("COUNTS:")
-        print("The file has {0} records.\n".format(result[1])) 
+        print("The file has {0} records.".format(result[1])) 
     except Exception:
-        print("There was a problem running the script!!\n")
+        print("There was a problem running the script!!")
         traceback.print_exc()
-        print("\nRun with the following arguments:\n"
-              "python3 pl_file_ok.py <file path> <h or nh> <delimiter> <fw or nfw>\n")
+        print("Run with the following arguments:"
+              "python3 pl_file_ok.py <file path> <h or nh> <delimiter> <fw or nfw>")
         sys.exit(1)
