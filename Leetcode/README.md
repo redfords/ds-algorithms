@@ -1,6 +1,6 @@
 # Leetcode
 
-Following this roadmap:
+Following the Neetcode roadmap:
 
 - Arrays & Hashing
 - Two Pointers, Stack
