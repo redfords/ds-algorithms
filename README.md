@@ -29,3 +29,7 @@ Searching algorithms: linear search, binary search, jump search.
 [Leetcode Patterns](https://seanprashad.com/leetcode-patterns/)
 
 [Data Structures](https://www.youtube.com/playlist?list=PLDV1Zeh2NRsB6SWUrDFW2RmDotAfPbeHu) by William Fiset
+
+[Awesome Algorithms](https://github.com/tayllan/awesome-algorithms), a curated list of places to learn and/or practice algorithms
+
+[Runestone Academy](https://runestone.academy/ns/books/published/pythonds3/index.html)
